@@ -10,4 +10,14 @@
         android:name="uz.mobiler.adiblar.fragments.WritersFragment"
         android:label="fragment_writers"
         tools:layout="@layout/fragment_writers" />
+    <fragment
+        android:id="@+id/chooseFragment"
+        android:name="uz.mobiler.adiblar.fragments.ChooseFragment"
+        android:label="fragment_choose"
+        tools:layout="@layout/fragment_choose" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="uz.mobiler.adiblar.fragments.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" />
 </navigation>
