@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "21810823643",
+    "firebase_url": "https://adiblar-b000b.firebaseio.com",
+    "project_id": "adiblar-b000b",
+    "storage_bucket": "adiblar-b000b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21810823643:android:af5205ee9c7800af83a7fe",
+        "android_client_info": {
+          "package_name": "uz.mobiler.adiblar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21810823643-f2pjrge8m9ijueniotqco17k76ktlk62.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC53KG4_kS6De3nen48FmrjEVQ6aaCsqt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21810823643-f2pjrge8m9ijueniotqco17k76ktlk62.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
