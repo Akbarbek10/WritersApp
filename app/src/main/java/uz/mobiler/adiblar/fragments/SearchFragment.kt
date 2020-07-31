@@ -57,7 +57,7 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
                                 }
                             }
                             root.rv_writers.adapter =
-                                RecyclerViewAdapter(writerList, this@SearchFragment, root.context)
+                                RecyclerViewAdapter(writerList, this@SearchFragment, root.context, 0)
                             root.et_search.addTextChangedListener { item ->
                                 val searchList = ArrayList<Writer>()
                                 for (writer in writerList) {
@@ -68,7 +68,7 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
                                     }
                                 }
                                 root.rv_writers.adapter =
-                                    RecyclerViewAdapter(searchList, this@SearchFragment, root.context)
+                                    RecyclerViewAdapter(searchList, this@SearchFragment, root.context,0)
                             }
                             root.iv_cancel.setOnClickListener {
                                 if (root.et_search.text.toString().isEmpty()) {
@@ -85,7 +85,7 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
             1 -> {
                 val allWriters = myDBHelper.getAllWriters()
                 root.rv_writers.adapter =
-                    RecyclerViewAdapter(allWriters, this@SearchFragment, root.context)
+                    RecyclerViewAdapter(allWriters as ArrayList<Writer>, this@SearchFragment, root.context,0)
                 root.et_search.addTextChangedListener { item ->
                     val searchList = ArrayList<Writer>()
                     for (writer in allWriters) {
@@ -96,7 +96,7 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
                         }
                     }
                     root.rv_writers.adapter =
-                        RecyclerViewAdapter(searchList, this@SearchFragment, root.context)
+                        RecyclerViewAdapter(searchList, this@SearchFragment, root.context, 0)
                 }
                 root.iv_cancel.setOnClickListener {
                     if (root.et_search.text.toString().isEmpty()) {

@@ -18,9 +18,10 @@ import uz.mobiler.adiblar.models.Writer
 
 
 class RecyclerViewAdapter(
-    var writerList: List<Writer>,
+    var writerList: ArrayList<Writer>,
     var listener: OnItemClick?,
-    var context: Context
+    var context: Context,
+    var type: Int
 ) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
@@ -49,6 +50,11 @@ class RecyclerViewAdapter(
                 override fun unLiked(likeButton: LikeButton?) {
                     myDBHelper.deleteWriter(writer)
                     itemView.like_back.setBackgroundResource(R.drawable.like_background)
+                    if (type == 1) {
+                        writerList.removeAt(position)
+                        notifyItemRemoved(position)
+                        notifyItemRangeChanged(position, itemCount)
+                    }
                 }
             })
         }
