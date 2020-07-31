@@ -40,8 +40,8 @@ class WriterInfoFragment : Fragment() {
         activity?.setSupportActionBar(toolbar)
 
         root.toolbar_layout.title = writer.writer
-        root.toolbar_layout.setCollapsedTitleTextColor(Color.BLACK)
-        root.toolbar_layout.setExpandedTitleColor(Color.BLACK)
+        root.toolbar_layout.setCollapsedTitleTextColor(root.context.resources.getColor(R.color.grey))
+        root.toolbar_layout.setExpandedTitleColor(root.context.resources.getColor(R.color.grey))
 
         root.like_btn1.isLiked = myDBHelper.getWriterById(writer)
 

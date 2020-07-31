@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/smoothBack"
     tools:context=".fragments.HomeFragment">
 
     <androidx.viewpager.widget.ViewPager
@@ -19,7 +20,7 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:backgroundColor="@color/white"
+        app:backgroundColor="@color/smoothBack"
         app:itemFontFamily="@font/sfpro"
         app:textColor="@color/white"
         app:textSize="14sp"
@@ -28,7 +29,7 @@
         app:indicatorRadius="25dp"
         app:sideMargins="10dp"
         app:itemPadding="10dp"
-        app:iconTint="#4D00B238"
+        app:iconTint="@color/smoothIcon"
         app:iconTintActive="#FFFFFF"
         app:menu="@menu/menu_bottom"
         app:cornerRadius="15dp"

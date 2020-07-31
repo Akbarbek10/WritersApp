@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F3F3"
+    android:background="@color/main_back"
     tools:context=".fragments.ChooseFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#F3F3F3"
+        android:background="@color/main_back"
         app:layout_constraintBottom_toTopOf="@id/rv_writers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.2"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sfpro"
             android:text="Saqlangan\nadiblar"
-            android:textColor="#303236"
+            android:textColor="@color/grey"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="15dp"
-
         android:layout_marginRight="15dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

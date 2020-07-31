@@ -50,4 +50,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 
+    implementation 'com.rm:rmswitch:1.2.2'
 }

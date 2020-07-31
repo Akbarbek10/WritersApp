@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#00B238</color>
     <color name="colorPrimaryDark">#00B238</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="white">#fff</color>
 
     <color name="mycolor">#00B238</color>
-    <color name="grey">#303236</color>
+    <color name="grey">#fff</color>
 
-    <color name="main_back">#F3F3F3</color>
-    <color name="bacgroundWhite">#fff</color>
+    <color name="main_back">#1A222C</color>
+    <color name="bacgroundWhite">#25303F</color>
 
-    <color name="smoothIcon">#4D00B238</color>
-    <color name="smoothBack">#FFFFFF</color>
+    <color name="smoothIcon">#80FFFFFF</color>
+    <color name="smoothBack">#131415</color>
 </resources>

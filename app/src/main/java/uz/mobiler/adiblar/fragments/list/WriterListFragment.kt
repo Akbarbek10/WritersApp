@@ -44,12 +44,6 @@ class WriterDataFragment : Fragment() {
             category = "world"
         }
 
-        return root
-
-    }
-
-    override fun onResume() {
-        super.onResume()
         databaseReference = firebaseDatabase.getReference(category)
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
@@ -77,6 +71,14 @@ class WriterDataFragment : Fragment() {
                 root.rv_writers.adapter = recyclerViewAdapter
             }
         })
+
+        return root
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 
     companion object {

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F3F3"
+    android:background="@color/main_back"
     tools:context=".fragments.data.WriterInfoFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="#F3F3F3"
+        android:background="@color/main_back"
         android:clipChildren="false"
         android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:clipChildren="false"
             android:fitsSystemWindows="true"
-            app:contentScrim="#fff"
+            app:contentScrim="@color/bacgroundWhite"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
@@ -46,7 +46,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_back"
-                        android:tint="#000" />
+                        android:tint="@color/grey" />
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
 
@@ -100,7 +100,7 @@
                 android:layout_marginLeft="30dp"
                 android:text="(1441-1501)"
                 android:layout_marginBottom="5dp"
-                android:textColor="#303236"
+                android:textColor="@color/grey"
                 app:layout_collapseMode="parallax"
                 android:layout_marginStart="35dp" />
         </com.google.android.material.appbar.CollapsingToolbarLayout>

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:background="@color/bacgroundWhite"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -50,7 +51,7 @@
                 android:gravity="center_vertical"
                 android:lines="2"
                 android:text="Alisher\nNavoiy"
-                android:textColor="#3A345A"
+                android:textColor="@color/grey"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -89,7 +90,7 @@
             android:paddingLeft="15dp"
             android:paddingBottom="15dp"
             android:text="(1441-1501)"
-            android:textColor="#3A345A"
+            android:textColor="@color/grey"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout" />

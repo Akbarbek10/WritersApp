@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F3F3"
+    android:background="@color/main_back"
     tools:context=".fragments.WritersFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/home_appbarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F3F3F3"
+        android:background="@color/main_back"
         android:fitsSystemWindows="true"
         app:elevation="0dp">
 
@@ -27,14 +27,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#F3F3F3">
+                android:background="@color/main_back">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sfpro"
                     android:text="Adiblar\nhayoti va ijodi"
-                    android:textColor="#303236"
+                    android:textColor="@color/grey"
                     android:textSize="32sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -91,6 +91,6 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="#F3F3F3"
+        android:background="@color/main_back"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

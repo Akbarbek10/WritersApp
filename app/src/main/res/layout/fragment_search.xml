@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_back"
     tools:context=".fragments.SearchFragment">
 
     <LinearLayout
@@ -26,9 +27,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#fff"
+            android:textColor="@color/grey"
+            android:background="@color/bacgroundWhite"
             android:fontFamily="@font/sfpro"
             android:hint="Qidruv "
+            android:textColorHint="@color/grey"
             android:inputType="textAutoComplete" />
 
         <ImageView
