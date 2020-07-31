@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.custom_tab.view.*
 import kotlinx.android.synthetic.main.fragment_writers.view.*
@@ -58,6 +59,9 @@ class WritersFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
+        root.iv_search.setOnClickListener {
+            findNavController().navigate(R.id.searchFragment)
+        }
         return root
     }
 
