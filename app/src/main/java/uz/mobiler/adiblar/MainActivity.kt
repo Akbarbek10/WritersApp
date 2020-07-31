@@ -18,14 +18,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navController = findNavController(R.id.main_fragment)
-        setupActionBarWithNavController(navController)
+        //setupActionBarWithNavController(navController)
 
+        bottomBar.onItemSelected = {
 
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_bottom,menu)
-        bottomBar.setupWithNavController(menu!!,navController)
+        menuInflater.inflate(R.menu.menu_bottom, menu)
+        bottomBar.setupWithNavController(menu!!, navController)
         return true
     }
 
