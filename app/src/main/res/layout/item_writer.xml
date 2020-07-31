@@ -36,7 +36,7 @@
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
             android:paddingTop="5dp"
-            
+
             app:layout_constraintBottom_toTopOf="@id/birthDeath"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_url">
