@@ -82,7 +82,7 @@ class RecyclerViewAdapter(
     private fun setAnimation(viewToAnimate: View, position: Int) {
         if (position > lastPosition) {
             val animation: Animation =
-                AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left)
+                AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
             viewToAnimate.startAnimation(animation)
             lastPosition = position
         }

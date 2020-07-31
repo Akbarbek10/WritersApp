@@ -66,7 +66,12 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
                             RecyclerViewAdapter(searchList, this@SearchFragment, root.context)
                     }
                     root.iv_cancel.setOnClickListener {
-                        root.et_search.setText("")
+                        if (root.et_search.text.toString().isEmpty()) {
+                            findNavController().popBackStack()
+                        }else{
+                            root.et_search.setText("")
+
+                        }
                     }
                 }
             })
