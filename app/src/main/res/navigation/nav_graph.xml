@@ -3,21 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/writersFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/writersFragment"
-        android:name="uz.mobiler.adiblar.fragments.WritersFragment"
-        android:label="fragment_writers"
-        tools:layout="@layout/fragment_writers" />
+        android:id="@+id/homeFragment"
+        android:name="uz.mobiler.adiblar.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_writerInfoFragment"
+            app:destination="@id/writerInfoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_writerInfoFragment2"
+            app:destination="@id/writerInfoFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
-        android:id="@+id/chooseFragment"
-        android:name="uz.mobiler.adiblar.fragments.ChooseFragment"
-        android:label="fragment_choose"
-        tools:layout="@layout/fragment_choose" />
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="uz.mobiler.adiblar.fragments.SettingFragment"
-        android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" />
+        android:id="@+id/writerInfoFragment"
+        android:name="uz.mobiler.adiblar.fragments.data.WriterInfoFragment"
+        android:label="fragment_writer_info"
+        tools:layout="@layout/fragment_writer_info" />
 </navigation>

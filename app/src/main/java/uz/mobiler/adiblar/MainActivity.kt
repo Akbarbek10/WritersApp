@@ -1,36 +1,21 @@
 package uz.mobiler.adiblar
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import androidx.core.view.get
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.activity_main.*
+import uz.mobiler.adiblar.adapters.ViewPagerAdapter
+import uz.mobiler.adiblar.fragments.ChooseFragment
+import uz.mobiler.adiblar.fragments.SettingFragment
+import uz.mobiler.adiblar.fragments.WritersFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navController = findNavController(R.id.main_fragment)
-        setupActionBarWithNavController(navController)
-
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_bottom,menu)
-        bottomBar.setupWithNavController(menu!!,navController)
-        return true
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        navController.navigateUp()
-        return true
     }
 }

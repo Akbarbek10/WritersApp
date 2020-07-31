@@ -5,56 +5,72 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.custom_tab.view.*
+import kotlinx.android.synthetic.main.fragment_writers.view.*
 import uz.mobiler.adiblar.R
+import uz.mobiler.adiblar.adapters.data.MyFragmentAdapter
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [WritersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class WritersFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var tabTitles: ArrayList<String>
+    private lateinit var root: View
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_writers, container, false)
+        root = inflater.inflate(R.layout.fragment_writers, container, false)
+
+
+        tabTitles = ArrayList()
+        tabTitles.add("Mumtoz adabiyoti")
+        tabTitles.add("O'zbek adabiyoti")
+        tabTitles.add("Jahon adabiyoti")
+
+        val adapter = MyFragmentAdapter(childFragmentManager)
+        root.pager.adapter = adapter
+        root.tabs.setupWithViewPager(root.pager)
+
+        setTabs()
+        root.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                root.pager.currentItem = tab.position
+                val tabItem =
+                    tab.customView?.findViewById<View>(R.id.tab_item)
+
+                val tabName = tab.customView?.findViewById<TextView>(R.id.tab_text)
+                tabName?.setTextColor(resources.getColor(R.color.white))
+                tabName?.text = tabTitles[tab.position]
+                tabItem?.background = resources.getDrawable(R.drawable.tablayout_default)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+                val tabItem =
+                    tab.customView?.findViewById<View>(R.id.tab_item)
+                tabItem?.background = resources.getDrawable(R.drawable.tablayout_selected)
+                val tabName = tab.customView?.findViewById<TextView>(R.id.tab_text)
+
+                tabName?.setTextColor(resources.getColor(R.color.grey))
+                tabName?.text = tabTitles[tab.position]
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
+
+        return root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WritersFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WritersFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun setTabs() {
+        for (i in 0..2) {
+            val tabView =
+                View.inflate(root.context, R.layout.custom_tab, null)
+            root.tabs.getTabAt(i)?.customView = tabView
+            if (i == 0) {
+                tabView.background = resources.getDrawable(R.drawable.tablayout_default)
+                tabView.tab_text.setTextColor(resources.getColor(R.color.white))
             }
+            tabView.tab_text.text = tabTitles[i]
+        }
     }
 }
