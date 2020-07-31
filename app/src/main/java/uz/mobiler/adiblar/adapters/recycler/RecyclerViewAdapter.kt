@@ -28,14 +28,14 @@ class RecyclerViewAdapter(
     private var lastPosition = -1
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun onBind(writer: Writer) {
+        fun onBind(writer: Writer, position: Int) {
             itemView.tv_name.text = writer.writer
             itemView.birthDeath.text = writer.birthDead
 
             if (myDBHelper.getWriterById(writer)) {
-                itemView.like_back.setBackgroundResource(R.drawable.like_background)
-            } else {
                 itemView.like_back.setBackgroundResource(R.drawable.unlike_background)
+            } else {
+                itemView.like_back.setBackgroundResource(R.drawable.like_background)
             }
             itemView.like_btn.isLiked = myDBHelper.getWriterById(writer)
             Glide.with(itemView).load(writer.imgUrl).placeholder(R.drawable.place_holder)
@@ -50,7 +50,6 @@ class RecyclerViewAdapter(
                     myDBHelper.deleteWriter(writer)
                     itemView.like_back.setBackgroundResource(R.drawable.like_background)
                 }
-
             })
         }
 
@@ -66,7 +65,7 @@ class RecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.onBind(writerList[position])
+        holder.onBind(writerList[position], position)
         setAnimation(holder.itemView, position)
 
         holder.itemView.setOnClickListener {
