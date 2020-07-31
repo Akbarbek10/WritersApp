@@ -32,6 +32,11 @@ class RecyclerViewAdapter(
             itemView.tv_name.text = writer.writer
             itemView.birthDeath.text = writer.birthDead
 
+            if (myDBHelper.getWriterById(writer)) {
+                itemView.like_back.setBackgroundResource(R.drawable.like_background)
+            } else {
+                itemView.like_back.setBackgroundResource(R.drawable.unlike_background)
+            }
             itemView.like_btn.isLiked = myDBHelper.getWriterById(writer)
             Glide.with(itemView).load(writer.imgUrl).placeholder(R.drawable.place_holder)
                 .centerCrop().error(R.drawable.error_image).into(itemView.image_url)
