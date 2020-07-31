@@ -24,6 +24,12 @@ class ChooseFragment : Fragment() {
     ): View? {
         root = inflater.inflate(R.layout.fragment_choose, container, false)
 
+
+        return root
+    }
+
+    override fun onResume() {
+        super.onResume()
         myDBHelper = MyDBHelper(root.context)
         writerList = myDBHelper.getAllWriters() as ArrayList<Writer>
 
@@ -34,7 +40,7 @@ class ChooseFragment : Fragment() {
                     bundle.putSerializable("writer", writer)
                     findNavController().navigate(R.id.writerInfoFragment, bundle)
                 }
-            }, root.context)
+            }, root.context, 1)
 
         root.iv_search.setOnClickListener {
             val bundle = Bundle()
@@ -42,6 +48,5 @@ class ChooseFragment : Fragment() {
             findNavController().navigate(R.id.searchFragment,bundle)
         }
         root.rv_writers.adapter = recyclerViewAdapter
-        return root
     }
 }

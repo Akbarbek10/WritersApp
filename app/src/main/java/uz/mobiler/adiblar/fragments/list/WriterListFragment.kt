@@ -22,6 +22,7 @@ class WriterDataFragment : Fragment() {
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
     private lateinit var category: String
+    private lateinit var recyclerViewAdapter: RecyclerViewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,8 +36,6 @@ class WriterDataFragment : Fragment() {
     ): View? {
         root = inflater.inflate(R.layout.fragment_writer_data, container, false)
         firebaseDatabase = FirebaseDatabase.getInstance()
-
-
         if (param1 == 0) {
             category = "classic"
         } else if (param1 == 1) {
@@ -44,6 +43,13 @@ class WriterDataFragment : Fragment() {
         } else {
             category = "world"
         }
+
+        return root
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         databaseReference = firebaseDatabase.getReference(category)
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
@@ -59,7 +65,7 @@ class WriterDataFragment : Fragment() {
                         writerList.add(writer)
                     }
                 }
-                root.rv_writers.adapter =
+                recyclerViewAdapter =
                     RecyclerViewAdapter(writerList, object : RecyclerViewAdapter.OnItemClick {
                         override fun onItemClickListener(writer: Writer) {
                             val bundle = Bundle()
@@ -67,14 +73,10 @@ class WriterDataFragment : Fragment() {
                             findNavController().navigate(R.id.writerInfoFragment, bundle)
                         }
 
-                    }, root.context)
+                    }, root.context, 0)
+                root.rv_writers.adapter = recyclerViewAdapter
             }
-
         })
-
-
-        return root
-
     }
 
     companion object {
