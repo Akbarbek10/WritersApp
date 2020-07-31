@@ -35,7 +35,9 @@ class MyDBHelper(context: Context) :
 
     override fun deleteWriter(writer: Writer) {
         val database = this.writableDatabase
-        database.delete(Config.TABLE_NAME, "${Config.ID} = ?", arrayOf(writer.id.toString()))
+        database.delete(Config.TABLE_NAME,
+            "${Config.WRITER} = ? and ${Config.BIRTH_DEAD} = ?",
+            arrayOf(writer.writer,writer.birthDead))
         database.close()
     }
 
