@@ -8,6 +8,6 @@ object Config {
     const val ID = "id"
     const val WRITER = "writer"
     const val BIRTH_DEAD = "birth_dead"
-    const val DESCRIPTION = "desc"
+    const val DESCRIPTION = "description"
     const val IMG_URL = "img_url"
 }

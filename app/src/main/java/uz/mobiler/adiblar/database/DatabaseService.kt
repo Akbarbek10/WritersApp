@@ -9,4 +9,6 @@ interface DatabaseService {
     fun deleteWriter(writer: Writer)
 
     fun getAllWriters(): List<Writer>
+
+    fun getWriterById(writer: Writer): Boolean
 }

@@ -16,7 +16,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:fitsSystemWindows="true"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:contentScrim="?attr/colorPrimary"
@@ -29,6 +29,7 @@
                 android:background="#F3F3F3">
 
                 <TextView
+                    android:fontFamily="@font/sfpro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Adiblar\nhayoti va ijodi"
@@ -70,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/tab_layout_background"

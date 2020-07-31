@@ -30,6 +30,7 @@
                 android:background="#F3F3F3">
 
                 <TextView
+                    android:fontFamily="@font/sfpro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="O’tkir Hoshimov"

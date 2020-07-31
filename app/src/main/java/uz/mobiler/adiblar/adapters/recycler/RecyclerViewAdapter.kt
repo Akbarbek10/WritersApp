@@ -1,26 +1,52 @@
 package uz.mobiler.adiblar.adapters.recycler
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.like.LikeButton
+import com.like.OnLikeListener
+import kotlinx.android.synthetic.main.item_writer.view.*
 import uz.mobiler.adiblar.R
+import uz.mobiler.adiblar.database.MyDBHelper
+import uz.mobiler.adiblar.models.Writer
 
 
 class RecyclerViewAdapter(
+    var writerList: List<Writer>,
     var listener: OnItemClick?,
     var context: Context
 ) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
+    val myDBHelper = MyDBHelper(context)
     private var lastPosition = -1
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun onBind(writer: String) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun onBind(writer: Writer) {
+            itemView.tv_name.text = writer.writer
+            itemView.birthDeath.text = writer.birthDead
 
+            itemView.like_btn.isLiked = myDBHelper.getWriterById(writer)
+            Glide.with(itemView).load(writer.imgUrl).placeholder(R.drawable.place_holder)
+                .centerCrop().error(R.drawable.error_image).into(itemView.image_url)
+            itemView.like_btn.setOnLikeListener(object : OnLikeListener {
+                override fun liked(likeButton: LikeButton?) {
+                    myDBHelper.addWriter(writer)
+                    itemView.like_back.setBackgroundResource(R.drawable.unlike_background)
+                }
+
+                override fun unLiked(likeButton: LikeButton?) {
+                    myDBHelper.deleteWriter(writer)
+                    itemView.like_back.setBackgroundResource(R.drawable.like_background)
+                }
+
+            })
         }
 
     }
@@ -31,20 +57,21 @@ class RecyclerViewAdapter(
         )
     }
 
-    override fun getItemCount(): Int = 15
+    override fun getItemCount(): Int = writerList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-
+        holder.onBind(writerList[position])
         setAnimation(holder.itemView, position)
 
         holder.itemView.setOnClickListener {
-            listener?.onItemClickListener()
+            listener?.onItemClickListener(writerList[position])
         }
+
     }
 
     interface OnItemClick {
-        fun onItemClickListener()
+        fun onItemClickListener(writer: Writer)
     }
 
     private fun setAnimation(viewToAnimate: View, position: Int) {

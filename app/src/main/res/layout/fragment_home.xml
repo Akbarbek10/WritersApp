@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:backgroundColor="@color/white"
+        app:itemFontFamily="@font/sfpro"
         app:textColor="@color/white"
         app:textSize="14sp"
         app:iconSize="24dp"

@@ -8,6 +8,7 @@
 
 
     <TextView
+        android:fontFamily="@font/sfpro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sozlamalar"
@@ -48,6 +49,7 @@
                 android:src="@drawable/ic_theme" />
 
             <TextView
+                android:fontFamily="@font/sfpro"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -90,6 +92,7 @@
                 android:src="@drawable/ic_language" />
 
             <TextView
+                android:fontFamily="@font/sfpro"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -135,6 +138,7 @@
                 android:src="@drawable/ic_share" />
 
             <TextView
+                android:fontFamily="@font/sfpro"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -175,6 +179,7 @@
                 android:src="@drawable/ic_about" />
 
             <TextView
+                android:fontFamily="@font/sfpro"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
