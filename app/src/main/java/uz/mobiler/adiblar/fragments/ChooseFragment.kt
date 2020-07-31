@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_choose.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.RecyclerViewAdapter
@@ -29,9 +30,17 @@ class ChooseFragment : Fragment() {
         recyclerViewAdapter =
             RecyclerViewAdapter(writerList, object : RecyclerViewAdapter.OnItemClick {
                 override fun onItemClickListener(writer: Writer) {
-
+                    val bundle = Bundle()
+                    bundle.putSerializable("writer", writer)
+                    findNavController().navigate(R.id.writerInfoFragment, bundle)
                 }
             }, root.context)
+
+        root.iv_search.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putInt("search", 1)
+            findNavController().navigate(R.id.searchFragment,bundle)
+        }
         root.rv_writers.adapter = recyclerViewAdapter
         return root
     }

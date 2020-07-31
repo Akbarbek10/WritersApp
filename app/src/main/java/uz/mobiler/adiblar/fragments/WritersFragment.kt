@@ -60,7 +60,9 @@ class WritersFragment : Fragment() {
         })
 
         root.iv_search.setOnClickListener {
-            findNavController().navigate(R.id.searchFragment)
+            val bundle = Bundle()
+            bundle.putInt("search", 0)
+            findNavController().navigate(R.id.searchFragment,bundle)
         }
         return root
     }

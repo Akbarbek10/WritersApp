@@ -27,6 +27,15 @@ class WriterInfoFragment : Fragment() {
             writer = arguments?.getSerializable("writer") as Writer
         }
 
+        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
+
+        val activity = activity as AppCompatActivity?
+        activity?.setSupportActionBar(toolbar)
+
+        root.toolbar_layout.title = writer.writer
+        root.toolbar_layout.setCollapsedTitleTextColor(Color.BLACK)
+
+
         return root
     }
 
