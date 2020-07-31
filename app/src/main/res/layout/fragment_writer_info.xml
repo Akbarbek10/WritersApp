@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="160dp"
         android:background="#F3F3F3"
         android:clipChildren="false"
         android:fitsSystemWindows="true"
@@ -96,8 +96,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:fontFamily="@font/sfpro"
                 android:layout_marginLeft="30dp"
                 android:text="(1441-1501)"
+                android:layout_marginBottom="5dp"
                 android:textColor="#303236"
                 app:layout_collapseMode="parallax"
                 android:layout_marginStart="35dp" />
