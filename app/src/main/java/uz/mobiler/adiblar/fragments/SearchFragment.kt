@@ -1,5 +1,6 @@
 package uz.mobiler.adiblar.fragments
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.RecyclerViewAdapter
 import uz.mobiler.adiblar.database.MyDBHelper
 import uz.mobiler.adiblar.models.Writer
+import uz.mobiler.adiblar.utils.MySharedPreference
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -34,7 +36,10 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
         root = inflater.inflate(R.layout.fragment_search, container, false)
         firebaseDatabase = FirebaseDatabase.getInstance()
 
-        val myDBHelper =MyDBHelper(root.context)
+        MySharedPreference.init(root.context)
+        setLocale()
+
+        val myDBHelper = MyDBHelper(root.context)
 
         when (arguments?.getInt("search")) {
             0 -> {
@@ -57,18 +62,30 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
                                 }
                             }
                             root.rv_writers.adapter =
-                                RecyclerViewAdapter(writerList, this@SearchFragment, root.context, 0)
+                                RecyclerViewAdapter(
+                                    writerList,
+                                    this@SearchFragment,
+                                    root.context,
+                                    0
+                                )
                             root.et_search.addTextChangedListener { item ->
                                 val searchList = ArrayList<Writer>()
                                 for (writer in writerList) {
                                     if (writer.writer.toLowerCase(Locale.getDefault())
-                                            .startsWith(item.toString().toLowerCase(Locale.getDefault()))
+                                            .startsWith(
+                                                item.toString().toLowerCase(Locale.getDefault())
+                                            )
                                     ) {
                                         searchList.add(writer)
                                     }
                                 }
                                 root.rv_writers.adapter =
-                                    RecyclerViewAdapter(searchList, this@SearchFragment, root.context,0)
+                                    RecyclerViewAdapter(
+                                        searchList,
+                                        this@SearchFragment,
+                                        root.context,
+                                        0
+                                    )
                             }
                             root.iv_cancel.setOnClickListener {
                                 if (root.et_search.text.toString().isEmpty()) {
@@ -85,7 +102,12 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
             1 -> {
                 val allWriters = myDBHelper.getAllWriters()
                 root.rv_writers.adapter =
-                    RecyclerViewAdapter(allWriters as ArrayList<Writer>, this@SearchFragment, root.context,0)
+                    RecyclerViewAdapter(
+                        allWriters as ArrayList<Writer>,
+                        this@SearchFragment,
+                        root.context,
+                        0
+                    )
                 root.et_search.addTextChangedListener { item ->
                     val searchList = ArrayList<Writer>()
                     for (writer in allWriters) {
@@ -117,5 +139,13 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
         val bundle = Bundle()
         bundle.putSerializable("writer", writer)
         findNavController().navigate(R.id.writerInfoFragment, bundle)
+    }
+
+    private fun setLocale() {
+        val locale = Locale(MySharedPreference.language!!)
+        Locale.setDefault(locale)
+        val config: Configuration = resources.configuration
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 }

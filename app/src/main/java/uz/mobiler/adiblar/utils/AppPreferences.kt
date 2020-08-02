@@ -25,4 +25,18 @@ object MySharedPreference {
                 it.putBoolean("mode", value)
             }
         }
+    var language: String?
+        get() = preferences.getString("language", "uz")
+        set(value) = preferences.edit {
+            if (value != null) {
+                it.putString("language", value)
+            }
+        }
+    var spinnerPosition: Int?
+        get() = preferences.getInt("position", 0)
+        set(value) = preferences.edit {
+            if (value != null) {
+                it.putInt("position", value)
+            }
+        }
 }

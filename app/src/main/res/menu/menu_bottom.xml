@@ -4,16 +4,16 @@
     <item
         android:id="@+id/first_fragment"
         android:icon="@drawable/ic_frame"
-        android:title="Adiblar" />
+        android:title="@string/adiblar" />
 
     <item
         android:id="@+id/second_fragment"
         android:icon="@drawable/ic_bookmark"
-        android:title="Saqlangan" />
+        android:title="@string/saqlangan" />
 
     <item
         android:id="@+id/third_fragment"
         android:icon="@drawable/ic_setting"
-        android:title="Sozlamalar" />
+        android:title="@string/sozlamalar" />
 
 </menu>

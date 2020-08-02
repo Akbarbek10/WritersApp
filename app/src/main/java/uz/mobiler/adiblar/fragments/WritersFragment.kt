@@ -1,5 +1,6 @@
 package uz.mobiler.adiblar.fragments
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,6 +13,9 @@ import kotlinx.android.synthetic.main.custom_tab.view.*
 import kotlinx.android.synthetic.main.fragment_writers.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.data.MyFragmentAdapter
+import uz.mobiler.adiblar.utils.MySharedPreference
+import java.util.*
+import kotlin.collections.ArrayList
 
 class WritersFragment : Fragment() {
 
@@ -22,12 +26,13 @@ class WritersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.fragment_writers, container, false)
-
+        MySharedPreference.init(root.context)
+        setLocale()
 
         tabTitles = ArrayList()
-        tabTitles.add("Mumtoz adabiyoti")
-        tabTitles.add("O'zbek adabiyoti")
-        tabTitles.add("Jahon adabiyoti")
+        tabTitles.add(getString(R.string.mumtoz))
+        tabTitles.add(getString(R.string.uzbek))
+        tabTitles.add(getString(R.string.world))
 
         val adapter = MyFragmentAdapter(childFragmentManager)
         root.pager.adapter = adapter
@@ -52,7 +57,7 @@ class WritersFragment : Fragment() {
                 tabItem?.background = resources.getDrawable(R.drawable.tablayout_selected)
                 val tabName = tab.customView?.findViewById<TextView>(R.id.tab_text)
 
-                tabName?.setTextColor(resources.getColor(R.color.grey))
+                tabName?.setTextColor(resources.getColor(R.color.grey_tab))
                 tabName?.text = tabTitles[tab.position]
             }
 
@@ -62,7 +67,7 @@ class WritersFragment : Fragment() {
         root.iv_search.setOnClickListener {
             val bundle = Bundle()
             bundle.putInt("search", 0)
-            findNavController().navigate(R.id.searchFragment,bundle)
+            findNavController().navigate(R.id.searchFragment, bundle)
         }
         return root
     }
@@ -78,5 +83,13 @@ class WritersFragment : Fragment() {
             }
             tabView.tab_text.text = tabTitles[i]
         }
+    }
+
+    private fun setLocale() {
+        val locale = Locale(MySharedPreference.language!!)
+        Locale.setDefault(locale)
+        val config: Configuration = resources.configuration
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 }

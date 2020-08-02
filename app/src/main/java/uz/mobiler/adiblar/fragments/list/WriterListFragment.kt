@@ -36,12 +36,16 @@ class WriterDataFragment : Fragment() {
     ): View? {
         root = inflater.inflate(R.layout.fragment_writer_data, container, false)
         firebaseDatabase = FirebaseDatabase.getInstance()
-        if (param1 == 0) {
-            category = "classic"
-        } else if (param1 == 1) {
-            category = "uzbek"
-        } else {
-            category = "world"
+        category = when (param1) {
+            0 -> {
+                "classic"
+            }
+            1 -> {
+                "uzbek"
+            }
+            else -> {
+                "world"
+            }
         }
 
         databaseReference = firebaseDatabase.getReference(category)

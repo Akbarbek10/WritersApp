@@ -3,15 +3,17 @@
 
     <color name="colorPrimary">#00B238</color>
     <color name="colorPrimaryDark">#00B238</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#00B238</color>
     <color name="white">#fff</color>
 
     <color name="mycolor">#00B238</color>
     <color name="grey">#fff</color>
+    <color name="grey_tab">#4DFFFFFF</color>
 
     <color name="main_back">#1A222C</color>
     <color name="bacgroundWhite">#25303F</color>
 
     <color name="smoothIcon">#80FFFFFF</color>
     <color name="smoothBack">#131415</color>
+    <color name="mark_color">#B10000</color>
 </resources>

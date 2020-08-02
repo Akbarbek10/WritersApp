@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Adiblar</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="saqlangan_nadiblar">Сақланган\nадиблар</string>
+    <string name="qidruv">Қидрув</string>
+    <string name="sozlamalar">Созламалар</string>
+    <string name="dark_theme">Дарк тҳеме</string>
+    <string name="dastur_tili">Дастур тили</string>
+    <string name="ulashish">Улашиш</string>
+    <string name="dastur_haqida">Дастур ҳақида</string>
+    <string name="adiblar_nhayoti_va_ijodi">Адиблар\nҳаёти ва ижоди</string>
+    <string name="mumtoz">Мумтоз адабиёт</string>
+    <string name="uzbek">Ўзбек адабиёти</string>
+    <string name="world">Жаҳон адабиёти</string>
+    <string name="adiblar">Адиблар</string>
+    <string name="saqlangan">Сақланган</string>
+    <string name="kril">Крил</string>
+    <string name="lotin">Lotin</string>
+    <string name="tilni_tanlang">Тилни танланг</string>
+    <string name="bekor_qilish">Бекор қилиш</string>
+    <string name="ok">Ок</string>
+</resources>

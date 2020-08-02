@@ -1,5 +1,6 @@
 package uz.mobiler.adiblar
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -11,6 +12,7 @@ import uz.mobiler.adiblar.fragments.ChooseFragment
 import uz.mobiler.adiblar.fragments.SettingFragment
 import uz.mobiler.adiblar.fragments.WritersFragment
 import uz.mobiler.adiblar.utils.MySharedPreference
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,5 +27,19 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         }
+        setLocale()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setLocale()
+    }
+
+    private fun setLocale() {
+        val locale = Locale(MySharedPreference.language!!)
+        Locale.setDefault(locale)
+        val config: Configuration = resources.configuration
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 }

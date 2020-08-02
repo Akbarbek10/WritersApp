@@ -1,7 +1,6 @@
 package uz.mobiler.adiblar.adapters.recycler
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +14,8 @@ import kotlinx.android.synthetic.main.item_writer.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.database.MyDBHelper
 import uz.mobiler.adiblar.models.Writer
+import uz.mobiler.adiblar.utils.LotinKrilService
+import uz.mobiler.adiblar.utils.MySharedPreference
 
 
 class RecyclerViewAdapter(
@@ -30,7 +31,23 @@ class RecyclerViewAdapter(
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun onBind(writer: Writer, position: Int) {
-            itemView.tv_name.text = writer.writer
+            MySharedPreference.init(context)
+
+            val split = writer.writer.split(" ")
+            var name: String = ""
+            if (split.size > 1) {
+                name = split[0] + "\n" + split[1]
+            } else {
+                name = writer.writer
+            }
+            when (MySharedPreference.language) {
+                "uz" -> {
+                    itemView.tv_name.text = name
+                }
+                "ru" -> {
+                    itemView.tv_name.text = LotinKrilService.convert(name)
+                }
+            }
             itemView.birthDeath.text = writer.birthDead
 
             if (myDBHelper.getWriterById(writer)) {

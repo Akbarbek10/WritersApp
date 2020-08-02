@@ -1,5 +1,6 @@
 package uz.mobiler.adiblar.fragments
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,9 @@ import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.RecyclerViewAdapter
 import uz.mobiler.adiblar.database.MyDBHelper
 import uz.mobiler.adiblar.models.Writer
+import uz.mobiler.adiblar.utils.MySharedPreference
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ChooseFragment : Fragment() {
 
@@ -24,12 +28,15 @@ class ChooseFragment : Fragment() {
     ): View? {
         root = inflater.inflate(R.layout.fragment_choose, container, false)
 
-
         return root
     }
 
     override fun onResume() {
         super.onResume()
+        MySharedPreference.init(root.context)
+        setLocale()
+        root.tv_savedWriters.text=getString(R.string.saqlangan_nadiblar)
+
         myDBHelper = MyDBHelper(root.context)
         writerList = myDBHelper.getAllWriters() as ArrayList<Writer>
 
@@ -45,8 +52,16 @@ class ChooseFragment : Fragment() {
         root.iv_search.setOnClickListener {
             val bundle = Bundle()
             bundle.putInt("search", 1)
-            findNavController().navigate(R.id.searchFragment,bundle)
+            findNavController().navigate(R.id.searchFragment, bundle)
         }
         root.rv_writers.adapter = recyclerViewAdapter
+    }
+
+    private fun setLocale() {
+        val locale = Locale(MySharedPreference.language!!)
+        Locale.setDefault(locale)
+        val config: Configuration = resources.configuration
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 }

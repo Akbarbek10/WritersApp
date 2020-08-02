@@ -2,15 +2,17 @@
 <resources>
     <color name="colorPrimary">#00B238</color>
     <color name="colorPrimaryDark">#00B238</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#00B238</color>
     <color name="white">#fff</color>
 
     <color name="mycolor">#00B238</color>
     <color name="grey">#303236</color>
+    <color name="grey_tab">#4D303236</color>
 
     <color name="main_back">#F3F3F3</color>
     <color name="bacgroundWhite">#fff</color>
 
     <color name="smoothIcon">#4D00B238</color>
     <color name="smoothBack">#FFFFFF</color>
+    <color name="mark_color">#FFEA00</color>
 </resources>

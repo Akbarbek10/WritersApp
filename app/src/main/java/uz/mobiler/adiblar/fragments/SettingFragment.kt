@@ -1,15 +1,25 @@
 package uz.mobiler.adiblar.fragments
 
+import android.app.Dialog
+import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.dialog.view.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
+import uz.mobiler.adiblar.MainActivity
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.utils.MySharedPreference
+import java.util.*
 
 
 class SettingFragment : Fragment() {
@@ -24,6 +34,18 @@ class SettingFragment : Fragment() {
 
         MySharedPreference.init(root.context)
 
+        when (MySharedPreference.language) {
+            "uz" -> {
+                root.spinner.text = getString(R.string.lotin)
+            }
+
+            "ru" -> {
+                root.spinner.text = getString(R.string.kril)
+            }
+        }
+        setLocale()
+        initUI()
+
         root.themeSwitch.isChecked = MySharedPreference.darkMode!!
 
         root.themeSwitch.addSwitchObserver { switchView, isChecked ->
@@ -36,12 +58,76 @@ class SettingFragment : Fragment() {
             }
 
         }
-        val adapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(
-            root.context,
-            R.array.language, R.layout.spinner_item
-        )
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        root.spinner.adapter = adapter
+
+        root.spinner.setOnClickListener {
+            val dialog = AlertDialog.Builder(root.context).create()
+            val dialogView = layoutInflater.inflate(R.layout.dialog, null, false)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.setView(dialogView)
+
+            dialogView.radio_group.check(MySharedPreference.spinnerPosition!!)
+
+            if ((MySharedPreference.spinnerPosition!! == 0)) {
+                dialogView.radio_group.check(R.id.radio_uz)
+            }
+
+            dialogView.btn_ok.setOnClickListener {
+                initUI()
+                when (dialogView.radio_group.checkedRadioButtonId) {
+                    R.id.radio_uz -> {
+                        MySharedPreference.language = "uz"
+                    }
+                    R.id.radio_ru -> {
+                        MySharedPreference.language = "ru"
+                    }
+                }
+                MySharedPreference.spinnerPosition = dialogView.radio_group.checkedRadioButtonId
+                startActivity(Intent(root.context, MainActivity::class.java))
+                activity?.finish()
+            }
+            dialogView.btn_cancel.setOnClickListener {
+                dialog.dismiss()
+            }
+            dialog.show()
+        }
+
+        root.card3.setOnClickListener {
+            val sharingIntent = Intent(Intent.ACTION_SEND)
+            sharingIntent.type = "text/plain"
+            val shareBody =
+                "https://play.google.com/store/apps/details?id=uz.mobiler.adiblar"
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Adiblar hayoti va ijodi");
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody)
+            this.startActivity(sharingIntent)
+
+        }
+
+        root.card4.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(root.context).create()
+            val dialogView = layoutInflater.inflate(R.layout.dialog_about, null, false)
+            alertDialog.setView(dialogView)
+            alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            alertDialog.window?.setGravity(Gravity.CENTER)
+            alertDialog.show()
+        }
+
         return root
     }
+
+    private fun initUI() {
+        root.tv_setting.text = getString(R.string.sozlamalar)
+        root.tv_darkTheme.text = getString(R.string.dark_theme)
+        root.tv_about.text = getString(R.string.dastur_haqida)
+        root.tv_language.text = getString(R.string.dastur_tili)
+        root.tv_share.text = getString(R.string.ulashish)
+    }
+
+    private fun setLocale() {
+        val locale = Locale(MySharedPreference.language!!)
+        Locale.setDefault(locale)
+        val config: Configuration = resources.configuration
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
 }

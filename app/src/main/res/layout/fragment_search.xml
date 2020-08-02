@@ -30,7 +30,7 @@
             android:textColor="@color/grey"
             android:background="@color/bacgroundWhite"
             android:fontFamily="@font/sfpro"
-            android:hint="Qidruv "
+            android:hint="@string/qidruv"
             android:textColorHint="@color/grey"
             android:inputType="textAutoComplete" />
 

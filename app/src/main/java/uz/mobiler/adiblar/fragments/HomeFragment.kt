@@ -1,5 +1,6 @@
 package uz.mobiler.adiblar.fragments
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.ViewPagerAdapter
+import uz.mobiler.adiblar.utils.MySharedPreference
+import java.util.*
 
 
 class HomeFragment : Fragment() {
@@ -20,6 +23,8 @@ class HomeFragment : Fragment() {
     ): View? {
 
         root = inflater.inflate(R.layout.fragment_home, container, false)
+        MySharedPreference.init(root.context)
+
         val listFragment = arrayListOf<Fragment>(
             WritersFragment(), ChooseFragment(), SettingFragment()
         )
@@ -49,5 +54,18 @@ class HomeFragment : Fragment() {
         }
 
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setLocale()
+    }
+
+    private fun setLocale() {
+        val locale = Locale(MySharedPreference.language!!)
+        Locale.setDefault(locale)
+        val config: Configuration = resources.configuration
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
     }
 }
