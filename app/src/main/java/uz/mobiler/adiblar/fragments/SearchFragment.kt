@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.ads.AdRequest
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import kotlinx.android.synthetic.main.fragment_search.view.rv_writers
@@ -38,6 +39,9 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
 
         MySharedPreference.init(root.context)
         setLocale()
+
+        val adRequest = AdRequest.Builder().build()
+        root.adView.loadAd(adRequest)
 
         val myDBHelper = MyDBHelper(root.context)
         writerList = ArrayList()

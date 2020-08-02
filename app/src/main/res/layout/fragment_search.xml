@@ -17,6 +17,7 @@
         android:padding="15dp"
         app:layout_constraintBottom_toTopOf="@id/rv_writers"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5"
@@ -27,12 +28,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/grey"
             android:background="@color/bacgroundWhite"
             android:fontFamily="@font/sfpro"
             android:hint="@string/qidruv"
-            android:textColorHint="@color/grey"
-            android:inputType="textAutoComplete" />
+            android:inputType="textAutoComplete"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey" />
 
         <ImageView
             android:id="@+id/iv_cancel"
@@ -45,18 +46,30 @@
         android:id="@+id/rv_writers"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout"
+        app:layout_constraintVertical_bias="1"
+        app:spanCount="2"
+        tools:listitem="@layout/item_writer" />
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="ca-app-pub-9972961616661898/9885284299"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.85"
         app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_writer"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1"
-        app:spanCount="2" />
-
+        app:layout_constraintTop_toBottomOf="@id/rv_writers" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

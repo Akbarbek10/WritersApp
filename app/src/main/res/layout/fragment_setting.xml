@@ -59,10 +59,10 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/sfpro"
-                android:textSize="16sp"
                 android:padding="5dp"
                 android:text="@string/dark_theme"
                 android:textColor="@color/grey"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <com.rm.rmswitch.RMSwitch
@@ -113,22 +113,22 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:textSize="16sp"
                 android:fontFamily="@font/sfpro"
                 android:padding="5dp"
                 android:text="@string/dastur_tili"
                 android:textColor="@color/grey"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/spinner"
                 android:layout_width="wrap_content"
-                android:text="Lotin"
-                android:textColor="@color/grey"
-                android:layout_gravity="center_vertical"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:entries="@array/language"
                 android:gravity="center_vertical"
-                android:entries="@array/language" />
+                android:text="Lotin"
+                android:textColor="@color/grey" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -166,11 +166,11 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:textSize="16sp"
                 android:fontFamily="@font/sfpro"
                 android:padding="5dp"
                 android:text="@string/ulashish"
                 android:textColor="@color/grey"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
 
@@ -211,13 +211,25 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/sfpro"
-                android:textSize="16sp"
                 android:padding="5dp"
                 android:text="@string/dastur_haqida"
                 android:textColor="@color/grey"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:adSize="SMART_BANNER"
+        app:adUnitId="ca-app-pub-9972961616661898/9885284299"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

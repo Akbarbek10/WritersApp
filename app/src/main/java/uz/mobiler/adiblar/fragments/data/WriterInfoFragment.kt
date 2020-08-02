@@ -16,6 +16,9 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
 import com.google.android.material.appbar.AppBarLayout
 import com.like.LikeButton
 import com.like.OnLikeListener
@@ -36,6 +39,7 @@ class WriterInfoFragment : Fragment() {
     lateinit var writer: Writer
     private var temp = false
     private var desc = ""
+    private lateinit var mInterstitialAd: InterstitialAd
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +53,11 @@ class WriterInfoFragment : Fragment() {
         if (arguments != null) {
             writer = arguments?.getSerializable("writer") as Writer
         }
+
+        mInterstitialAd = InterstitialAd(root.context)
+        mInterstitialAd.adUnitId = getString(R.string.interstitial)
+        mInterstitialAd.loadAd(AdRequest.Builder().build())
+
 
         val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
         val activity = activity as AppCompatActivity?
@@ -108,7 +117,17 @@ class WriterInfoFragment : Fragment() {
         root.tv_birthDeath.text = ("(${writer.birthDead})")
 
         root.btn_back.setOnClickListener {
-            findNavController().popBackStack()
+            if (mInterstitialAd.isLoaded) {
+                mInterstitialAd.show()
+                mInterstitialAd.adListener = object : AdListener() {
+                    override fun onAdClosed() {
+                        super.onAdClosed()
+                        findNavController().popBackStack()
+                    }
+                }
+            } else {
+                findNavController().popBackStack()
+            }
         }
 
         root.layout_search.setOnClickListener {
@@ -148,7 +167,18 @@ class WriterInfoFragment : Fragment() {
                 isShow = false
                 root.like_back.setBackgroundResource(R.drawable.like_background_white)
                 root.like_btn1.setLikeDrawableRes(R.drawable.ic_bookmark_green)
+
+                val split = name.split(" ")
+                if (split.size > 2) {
+                    root.toolbar_layout.title =
+                        split[0].substring(0, 1) + "." + split[1].substring(0, 1) + ". " + split[2]
+
+                } else {
+                    root.toolbar_layout.title = name
+                }
+
             } else if (!isShow) {
+
                 if (root.like_btn1.isLiked) {
                     root.like_back.setBackgroundResource(R.drawable.unlike_background)
                     root.like_btn1.setLikeDrawableRes(R.drawable.ic_bookmark)
@@ -157,7 +187,14 @@ class WriterInfoFragment : Fragment() {
                     root.like_btn1.setLikeDrawableRes(R.drawable.ic_vector2)
                 }
 
-                root.toolbar_layout.title = name
+                val split = name.split(" ")
+                if (split.size > 2) {
+                    root.toolbar_layout.title =
+                        split[0].substring(0, 1) + "." + split[1].substring(0, 1) + ". " + split[2]
+
+                } else {
+                    root.toolbar_layout.title = name
+                }
                 isShow = true
             }
 

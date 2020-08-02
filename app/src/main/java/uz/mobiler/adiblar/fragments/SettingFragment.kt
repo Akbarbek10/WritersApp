@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.dialog.view.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
 import uz.mobiler.adiblar.MainActivity
@@ -33,6 +34,9 @@ class SettingFragment : Fragment() {
         root = inflater.inflate(R.layout.fragment_setting, container, false)
 
         MySharedPreference.init(root.context)
+
+        val adRequest = AdRequest.Builder().build()
+        root.adView.loadAd(adRequest)
 
         when (MySharedPreference.language) {
             "uz" -> {
