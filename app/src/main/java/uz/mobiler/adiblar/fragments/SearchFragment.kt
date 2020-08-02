@@ -40,11 +40,10 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
         setLocale()
 
         val myDBHelper = MyDBHelper(root.context)
-
+        writerList = ArrayList()
         when (arguments?.getInt("search")) {
             0 -> {
                 val category = listOf("classic", "uzbek", "world")
-                writerList = ArrayList()
                 category.forEach { it ->
                     databaseReference = firebaseDatabase.getReference(it)
                     databaseReference.addValueEventListener(object : ValueEventListener {
@@ -53,7 +52,6 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
                         }
 
                         override fun onDataChange(snapshot: DataSnapshot) {
-
                             val children = snapshot.children
                             for (child in children) {
                                 val writer = child.getValue(Writer::class.java)
