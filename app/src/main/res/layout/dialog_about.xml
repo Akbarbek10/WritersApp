@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sfpro"
             android:gravity="center"
-            android:text="O'zbek va Jahon adabiyoi ixlosmandlari uchun ajoyib qo'llanma."
+            android:text="O'zbek va Jahon adabiyoti ixlosmandlari uchun ajoyib qo'llanma."
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/grey" />
 
