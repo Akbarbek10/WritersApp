@@ -162,23 +162,12 @@ class WriterInfoFragment : Fragment() {
             if (abs(scrollRange + p1) == 0 && temp) {
                 root.toolbar_layout.title = ""
                 isShow = false
-            }
-            if (abs(scrollRange + p1) == 0) {
+            } else if (abs(scrollRange + p1) == 0) {
                 isShow = false
                 root.like_back.setBackgroundResource(R.drawable.like_background_white)
                 root.like_btn1.setLikeDrawableRes(R.drawable.ic_bookmark_green)
 
-                val split = name.split(" ")
-                if (split.size > 2) {
-                    root.toolbar_layout.title =
-                        split[0].substring(0, 1) + "." + split[1].substring(0, 1) + ". " + split[2]
-
-                } else {
-                    root.toolbar_layout.title = name
-                }
-
             } else if (!isShow) {
-
                 if (root.like_btn1.isLiked) {
                     root.like_back.setBackgroundResource(R.drawable.unlike_background)
                     root.like_btn1.setLikeDrawableRes(R.drawable.ic_bookmark)
@@ -193,7 +182,7 @@ class WriterInfoFragment : Fragment() {
                         split[0].substring(0, 1) + "." + split[1].substring(0, 1) + ". " + split[2]
 
                 } else {
-                    root.toolbar_layout.title = name
+                root.toolbar_layout.title = name
                 }
                 isShow = true
             }
