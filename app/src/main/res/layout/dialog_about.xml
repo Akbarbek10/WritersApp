@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:background="@color/bacgroundWhite"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sfpro"
             android:gravity="center"
-            android:text="O'zbek va Jahon adabiyotini sevuchilar uchun ajoyib qo'llanma."
+            android:text="O'zbek va Jahon adabiyoi ixlosmandlari uchun ajoyib qo'llanma."
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/grey" />
 
