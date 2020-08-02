@@ -14,7 +14,7 @@ class MyDBHelper(context: Context) :
 
     override fun onCreate(db: SQLiteDatabase?) {
         val query =
-            "create table ${Config.TABLE_NAME}(${Config.ID} integer primary key autoincrement, ${Config.WRITER} text, ${Config.BIRTH_DEAD} text, ${Config.DESCRIPTION} text, ${Config.IMG_URL} text)"
+            "create table ${Config.TABLE_NAME}(${Config.ID} text primary key, ${Config.WRITER} text, ${Config.BIRTH_DEAD} text, ${Config.DESCRIPTION} text, ${Config.IMG_URL} text)"
         db?.execSQL(query)
     }
 
@@ -25,6 +25,7 @@ class MyDBHelper(context: Context) :
     override fun addWriter(writer: Writer) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
+        contentValues.put(Config.ID, writer.id)
         contentValues.put(Config.WRITER, writer.writer)
         contentValues.put(Config.BIRTH_DEAD, writer.birthDead)
         contentValues.put(Config.DESCRIPTION, writer.description)
@@ -50,7 +51,7 @@ class MyDBHelper(context: Context) :
 
             do {
                 val writer = Writer()
-                writer.id = cursor.getInt(0)
+                writer.id = cursor.getString(0)
                 writer.writer = cursor.getString(1)
                 writer.birthDead = cursor.getString(2)
                 writer.description = cursor.getString(3)
