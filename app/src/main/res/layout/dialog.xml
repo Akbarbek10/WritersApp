@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/sfpro"
                 android:padding="5dp"
-                android:text="Lotin"
+                android:text="@string/lotin"
                 android:textColor="@color/grey"
                 android:textSize="20sp" />
 
@@ -45,7 +45,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/sfpro"
                 android:padding="5dp"
-                android:text="Крил"
+                android:text="@string/kril"
                 android:textColor="@color/grey"
                 android:textSize="20sp" />
         </RadioGroup>
