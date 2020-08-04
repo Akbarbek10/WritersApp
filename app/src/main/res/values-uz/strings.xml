@@ -21,5 +21,7 @@
     <string name="bekor_qilish">Bekor qilish</string>
     <string name="ok">Ok</string>
     <string name="interstitial">ca-app-pub-9972961616661898/4349994384</string>
+    <string name="night">Tungi rejim</string>
+    <string name="day">Kunduzgi rejim</string>
 
 </resources>

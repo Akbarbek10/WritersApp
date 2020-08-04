@@ -178,11 +178,19 @@ class WriterInfoFragment : Fragment() {
 
                 val split = name.split(" ")
                 if (split.size > 2) {
-                    root.toolbar_layout.title =
-                        split[0].substring(0, 1) + "." + split[1].substring(0, 1) + ". " + split[2]
-
+                    var text = ""
+                    split.forEachIndexed { index, s ->
+                        if (index == 0) {
+                            text += split[0].substring(0, 1) + ". "
+                        } else if (index == 1) {
+                            text += split[1].substring(0, 1) + ". "
+                        } else {
+                            text += split[index] + " "
+                        }
+                    }
+                    root.toolbar_layout.title = text
                 } else {
-                root.toolbar_layout.title = name
+                    root.toolbar_layout.title = name
                 }
                 isShow = true
             }

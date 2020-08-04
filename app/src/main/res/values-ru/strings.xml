@@ -21,4 +21,6 @@
     <string name="bekor_qilish">Бекор қилиш</string>
     <string name="ok">Ок</string>
     <string name="interstitial">ca-app-pub-9972961616661898/4349994384</string>
+    <string name="night">Тунги режим</string>
+    <string name="day">Кундузги режим</string>
 </resources>

@@ -34,7 +34,6 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-
                 <LinearLayout
                     android:id="@+id/btn_back"
                     android:layout_width="45dp"

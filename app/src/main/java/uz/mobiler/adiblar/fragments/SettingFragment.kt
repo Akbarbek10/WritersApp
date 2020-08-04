@@ -56,9 +56,11 @@ class SettingFragment : Fragment() {
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 MySharedPreference.darkMode = true
+                root.tv_darkTheme.text = getString(R.string.night)
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 MySharedPreference.darkMode = false
+                root.tv_darkTheme.text = getString(R.string.day)
             }
 
         }
@@ -120,7 +122,6 @@ class SettingFragment : Fragment() {
 
     private fun initUI() {
         root.tv_setting.text = getString(R.string.sozlamalar)
-        root.tv_darkTheme.text = getString(R.string.dark_theme)
         root.tv_about.text = getString(R.string.dastur_haqida)
         root.tv_language.text = getString(R.string.dastur_tili)
         root.tv_share.text = getString(R.string.ulashish)

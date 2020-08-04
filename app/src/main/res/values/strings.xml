@@ -4,7 +4,6 @@
     <string name="saqlangan_nadiblar">Saqlangan\nadiblar</string>
     <string name="qidruv">Qidruv</string>
     <string name="sozlamalar">Sozlamalar</string>
-    <string name="dark_theme">Dark theme</string>
     <string name="dastur_tili">Dastur tili</string>
     <string name="ulashish">Ulashish</string>
     <string name="dastur_haqida">Dastur haqida</string>
@@ -20,4 +19,6 @@
     <string name="bekor_qilish">Bekor qilish</string>
     <string name="ok">Ok</string>
     <string name="interstitial">ca-app-pub-9972961616661898/4349994384</string>
+    <string name="night">Tungi rejim</string>
+    <string name="day">Kunduzgi rejim</string>
 </resources>
