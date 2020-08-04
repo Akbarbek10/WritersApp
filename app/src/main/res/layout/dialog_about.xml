@@ -47,8 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/sfpro"
-
-            android:text="Version: 1.0.0"
+            android:text="Version: 1.0.1"
             android:textColor="@color/grey" />
 
         <TextView
