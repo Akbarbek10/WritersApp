@@ -71,6 +71,7 @@ class WriterDataFragment : Fragment() {
                         writerList.add(writer)
                     }
                 }
+                writerList.size
                 recyclerViewAdapter =
                     RecyclerViewAdapter(writerList, object : RecyclerViewAdapter.OnItemClick {
                         override fun onItemClickListener(writer: Writer) {
