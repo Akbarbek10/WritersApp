@@ -37,6 +37,7 @@ class BookFragment : Fragment() {
                 .error(R.drawable.error_image)
                 .into(binding.ivBook)
         }
+
         return binding.root
     }
 
