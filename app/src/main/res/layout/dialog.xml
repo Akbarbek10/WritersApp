@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bacgroundWhite"
+        android:background="@color/backgroundWhite"
         android:orientation="vertical"
         android:padding="15dp">
 
@@ -64,7 +64,7 @@
                 android:gravity="center"
                 android:fontFamily="@font/sfpro"
                 android:text="@string/bekor_qilish"
-                android:textColor="@color/mycolor"
+                android:textColor="@color/myColor"
                 android:textSize="16sp"
                 android:layout_marginRight="30dp"
                 android:textStyle="bold" />
@@ -77,7 +77,7 @@
                 android:layout_marginRight="15dp"
                 android:fontFamily="@font/sfpro"
                 android:text="@string/ok"
-                android:textColor="@color/mycolor"
+                android:textColor="@color/myColor"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>

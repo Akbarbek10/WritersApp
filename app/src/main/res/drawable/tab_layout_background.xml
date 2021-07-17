@@ -8,6 +8,6 @@
 
     <!-- TabLayout background color -->
     <solid
-        android:color="@color/bacgroundWhite"/>
+        android:color="@color/backgroundWhite"/>
 
 </shape>

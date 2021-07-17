@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_back"
-    tools:context=".fragments.data.WriterInfoFragment">
+    tools:context=".ui.writer.WriterInfoFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:clipChildren="false"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/bacgroundWhite"
+            app:contentScrim="@color/backgroundWhite"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
@@ -82,10 +82,10 @@
                     android:id="@+id/like_btn1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:circle_end_color="@color/mycolor"
-                    app:circle_start_color="@color/mycolor"
-                    app:dots_primary_color="@color/mycolor"
-                    app:dots_secondary_color="@color/mycolor"
+                    app:circle_end_color="@color/myColor"
+                    app:circle_start_color="@color/myColor"
+                    app:dots_primary_color="@color/myColor"
+                    app:dots_secondary_color="@color/myColor"
                     app:icon_size="20dp"
                     app:like_drawable="@drawable/ic_bookmark"
                     app:unlike_drawable="@drawable/ic_vector2" />
@@ -124,7 +124,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/bacgroundWhite"
+                    android:background="@color/backgroundWhite"
                     android:fontFamily="@font/sfpro"
                     android:hint="@string/qidruv"
                     android:inputType="textAutoComplete"

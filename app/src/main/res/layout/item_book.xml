@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:adjustViewBounds="true"
     android:clickable="true"
-    android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
+    android:focusable="true"
+    android:adjustViewBounds="true"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image_url"
+            android:id="@+id/iv_book"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
@@ -40,10 +40,9 @@
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
             android:paddingTop="5dp"
-
-            app:layout_constraintBottom_toTopOf="@id/birthDeath"
+            app:layout_constraintBottom_toTopOf="@id/tv_author"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_url">
+            app:layout_constraintTop_toBottomOf="@id/iv_book">
 
             <TextView
                 android:id="@+id/tv_name"
@@ -53,9 +52,9 @@
                 android:fontFamily="@font/sfpro"
                 android:gravity="center_vertical"
                 android:lines="2"
-                android:text="Alisher\nNavoiy"
+                android:text="Shohchorbog tongi"
                 android:textColor="@color/grey"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -85,17 +84,18 @@
 
 
         <TextView
-            android:id="@+id/birthDeath"
+            android:id="@+id/tv_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sfpro"
             android:gravity="center_vertical"
-            android:paddingLeft="15dp"
             android:paddingBottom="15dp"
-            android:text="(1441-1501)"
+            android:text="Yuriy Nagibin"
             android:textColor="@color/grey"
             android:textSize="12sp"
+            app:layout_constraintHorizontal_bias="0.16"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

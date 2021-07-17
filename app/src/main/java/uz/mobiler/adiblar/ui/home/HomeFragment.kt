@@ -1,4 +1,4 @@
-package uz.mobiler.adiblar.fragments
+package uz.mobiler.adiblar.ui.home
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -10,6 +10,10 @@ import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.ViewPagerAdapter
+import uz.mobiler.adiblar.ui.library.LibraryFragment
+import uz.mobiler.adiblar.ui.saved.ChooseFragment
+import uz.mobiler.adiblar.ui.setting.SettingFragment
+import uz.mobiler.adiblar.ui.writer.WritersFragment
 import uz.mobiler.adiblar.utils.MySharedPreference
 import java.util.*
 
@@ -26,7 +30,7 @@ class HomeFragment : Fragment() {
         MySharedPreference.init(root.context)
 
         val listFragment = arrayListOf<Fragment>(
-            WritersFragment(), ChooseFragment(), SettingFragment()
+            WritersFragment(), LibraryFragment(),ChooseFragment()
         )
         val adapter = ViewPagerAdapter(listFragment, childFragmentManager)
 

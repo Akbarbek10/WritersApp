@@ -7,7 +7,7 @@
     android:id="@+id/nested_scroll"
     android:background="@color/main_back"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".fragments.data.WriterInfoFragment"
+    tools:context=".ui.writer.WriterInfoFragment"
     tools:showIn="@layout/fragment_writer_info">
 
     <LinearLayout
@@ -25,7 +25,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/bacgroundWhite"
+                android:background="@color/backgroundWhite"
                 android:orientation="vertical">
 
                 <ImageView

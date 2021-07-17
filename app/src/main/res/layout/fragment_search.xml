@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_back"
-    tools:context=".fragments.SearchFragment">
+    tools:context=".ui.search.SearchFragment">
 
     <LinearLayout
         android:id="@+id/layout"
@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/bacgroundWhite"
+            android:background="@color/backgroundWhite"
             android:fontFamily="@font/sfpro"
             android:hint="@string/qidruv"
             android:inputType="textAutoComplete"

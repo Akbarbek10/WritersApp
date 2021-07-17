@@ -1,4 +1,4 @@
-package uz.mobiler.adiblar.fragments.list
+package uz.mobiler.adiblar.ui.list
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -23,6 +23,7 @@ class WriterDataFragment : Fragment() {
     private lateinit var databaseReference: DatabaseReference
     private lateinit var category: String
     private lateinit var recyclerViewAdapter: RecyclerViewAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {

@@ -1,4 +1,4 @@
-package uz.mobiler.adiblar.fragments
+package uz.mobiler.adiblar.ui.writer
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -68,6 +68,10 @@ class WritersFragment : Fragment() {
             val bundle = Bundle()
             bundle.putInt("search", 0)
             findNavController().navigate(R.id.searchFragment, bundle)
+        }
+
+        root.iv_setting.setOnClickListener {
+            findNavController().navigate(R.id.settingFragment)
         }
         return root
     }

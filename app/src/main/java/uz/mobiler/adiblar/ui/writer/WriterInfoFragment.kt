@@ -1,9 +1,7 @@
-package uz.mobiler.adiblar.fragments.data
+package uz.mobiler.adiblar.ui.writer
 
 import android.content.res.Configuration
-import android.os.Build
 import android.os.Bundle
-import android.text.Html
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.BackgroundColorSpan
@@ -15,13 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.google.android.material.appbar.AppBarLayout
 import com.like.LikeButton
 import com.like.OnLikeListener
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.content_scrolling.view.*
 import kotlinx.android.synthetic.main.fragment_writer_info.view.*
 import uz.mobiler.adiblar.R
@@ -111,8 +109,8 @@ class WriterInfoFragment : Fragment() {
 
         })
 
-        Glide.with(root).load(writer.imgUrl).placeholder(R.drawable.place_holder)
-            .centerCrop().error(R.drawable.error_image).into(root.iv_image)
+        Picasso.get().load(writer.imgUrl).placeholder(R.drawable.place_holder)
+            .fit().error(R.drawable.error_image).into(root.iv_image)
 
         root.tv_birthDeath.text = ("(${writer.birthDead})")
 

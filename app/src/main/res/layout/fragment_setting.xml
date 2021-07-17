@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_back"
-    tools:context=".fragments.SettingFragment">
+    tools:context=".ui.setting.SettingFragment">
 
 
     <TextView
@@ -41,7 +41,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bacgroundWhite"
+            android:background="@color/backgroundWhite"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="15dp">
@@ -96,7 +96,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bacgroundWhite"
+            android:background="@color/backgroundWhite"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="15dp">
@@ -149,7 +149,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bacgroundWhite"
+            android:background="@color/backgroundWhite"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="15dp">
@@ -193,7 +193,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/bacgroundWhite"
+            android:background="@color/backgroundWhite"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="15dp">

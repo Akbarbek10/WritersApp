@@ -1,4 +1,4 @@
-package uz.mobiler.adiblar.fragments
+package uz.mobiler.adiblar.ui.saved
 
 import android.content.res.Configuration
 import android.os.Bundle

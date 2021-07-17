@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/smoothBack"
-    tools:context=".fragments.HomeFragment">
+    tools:context=".ui.home.HomeFragment">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
@@ -25,7 +25,7 @@
         app:textColor="@color/white"
         app:textSize="14sp"
         app:iconSize="24dp"
-        app:indicatorColor="@color/mycolor"
+        app:indicatorColor="@color/myColor"
         app:indicatorRadius="25dp"
         app:sideMargins="10dp"
         app:itemPadding="10dp"

@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.like.LikeButton
 import com.like.OnLikeListener
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_writer.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.database.MyDBHelper
@@ -56,8 +56,10 @@ class RecyclerViewAdapter(
                 itemView.like_back.setBackgroundResource(R.drawable.like_background)
             }
             itemView.like_btn.isLiked = myDBHelper.getWriterById(writer)
-            Glide.with(itemView).load(writer.imgUrl).placeholder(R.drawable.place_holder)
-                .centerCrop().error(R.drawable.error_image).into(itemView.image_url)
+
+            Picasso.get().load(writer.imgUrl).placeholder(R.drawable.place_holder)
+                .error(R.drawable.error_image).into(itemView.image_url)
+
             itemView.like_btn.setOnLikeListener(object : OnLikeListener {
                 override fun liked(likeButton: LikeButton?) {
                     myDBHelper.addWriter(writer)

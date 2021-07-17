@@ -4,15 +4,8 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
-import kotlinx.android.synthetic.main.activity_main.*
-import uz.mobiler.adiblar.adapters.ViewPagerAdapter
-import uz.mobiler.adiblar.fragments.ChooseFragment
-import uz.mobiler.adiblar.fragments.SettingFragment
-import uz.mobiler.adiblar.fragments.WritersFragment
 import uz.mobiler.adiblar.utils.MySharedPreference
 import java.util.*
 
@@ -21,14 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         MySharedPreference.init(this)
-
-        MobileAds.initialize(this) {}
-
-        val testDeviceIds = listOf("FC1A666C20BC789089825180CFE619C6")
-        val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
-        MobileAds.setRequestConfiguration(configuration)
 
         if (MySharedPreference.darkMode!!) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -36,6 +22,15 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         }
+
+        setContentView(R.layout.activity_main)
+
+        MobileAds.initialize(this) {}
+
+        val testDeviceIds = listOf("FC1A666C20BC789089825180CFE619C6")
+        val configuration = RequestConfiguration.Builder().setTestDeviceIds(testDeviceIds).build()
+        MobileAds.setRequestConfiguration(configuration)
+
         setLocale()
     }
 

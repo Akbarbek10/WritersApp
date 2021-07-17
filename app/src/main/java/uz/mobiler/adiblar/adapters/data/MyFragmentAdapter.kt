@@ -3,7 +3,7 @@ package uz.mobiler.adiblar.adapters.data
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import uz.mobiler.adiblar.fragments.list.WriterDataFragment
+import uz.mobiler.adiblar.ui.list.WriterDataFragment
 
 class MyFragmentAdapter(fm: FragmentManager?) :
     FragmentStatePagerAdapter(
