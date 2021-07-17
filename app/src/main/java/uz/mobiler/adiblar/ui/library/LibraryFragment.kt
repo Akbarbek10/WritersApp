@@ -20,7 +20,7 @@ class LibraryFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
-
+    private lateinit var adapter: BooksRecyclerViewAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,10 +30,10 @@ class LibraryFragment : Fragment() {
         firebaseDatabase = FirebaseDatabase.getInstance()
         databaseReference = firebaseDatabase.getReference("library")
 
-        val adapter = BooksRecyclerViewAdapter {
-            val bunde = Bundle()
-            bunde.putSerializable("book", it)
-            findNavController().navigate(R.id.bookFragment, bunde)
+        adapter = BooksRecyclerViewAdapter {
+            val bundle = Bundle()
+            bundle.putSerializable("book", it)
+            findNavController().navigate(R.id.bookFragment, bundle)
         }
 
         databaseReference.addValueEventListener(object : ValueEventListener {
@@ -42,7 +42,10 @@ class LibraryFragment : Fragment() {
                 snapshot.children.forEach {
                     val value = it.getValue(Book::class.java)
                     if (value != null) {
-                        list.add(value)
+                        for (i in 0..4){
+                            list.add(value)
+                        }
+
                     }
                 }
                 adapter.differ.submitList(list)
@@ -53,10 +56,13 @@ class LibraryFragment : Fragment() {
             }
         })
 
-        binding.rvLibrary.adapter = adapter
+
+        binding.rvLibraryWorldHistory.adapter = adapter
+        binding.rvLibraryPopular.adapter = adapter
 
         return binding.root
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
