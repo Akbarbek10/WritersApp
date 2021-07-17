@@ -33,6 +33,9 @@
             app:destination="@id/bookFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookListFragment"
+            app:destination="@id/bookListFragment" />
     </fragment>
     <fragment
         android:id="@+id/writerInfoFragment"
@@ -54,4 +57,9 @@
         android:name="uz.mobiler.adiblar.ui.library.BookFragment"
         android:label="fragment_book"
         tools:layout="@layout/fragment_book" />
+    <fragment
+        android:id="@+id/bookListFragment"
+        android:name="uz.mobiler.adiblar.ui.library.BookListFragment"
+        android:label="fragment_book_list"
+        tools:layout="@layout/fragment_book_list" />
 </navigation>

@@ -100,6 +100,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/sfpro"
+                android:textSize="16sp"
                 android:text="(1441-1501)"
                 android:textColor="@color/grey"
                 app:layout_collapseMode="parallax" />

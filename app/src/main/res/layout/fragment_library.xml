@@ -11,12 +11,12 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         android:fontFamily="@font/sfpro"
         android:text="Badiiy\nadabiyotlar"
         android:textColor="@color/grey"
         android:textSize="32sp"
         android:textStyle="bold"
-        android:layout_margin="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,77 +25,115 @@
         android:id="@+id/iv_search"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_margin="16dp"
         android:clickable="true"
         android:focusable="true"
-        android:layout_margin="16dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:src="@drawable/ic_search"
         app:layout_constraintBottom_toBottomOf="@id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_title" />
 
-
-    <TextView
-        android:id="@+id/tv_title_worldHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:clickable="true"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:drawablePadding="6dp"
-        android:gravity="left"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:text="Jahon adabiyoti"
-        android:textColor="@drawable/text_title_clicked"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_library_worldHistory"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingLeft="4dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_worldHistory"
-        app:spanCount="1"
-        tools:listitem="@layout/item_library_book" />
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
-    <TextView
-        android:id="@+id/tv_title_popular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:drawableEnd="@drawable/ic_arrow_right"
-        android:drawablePadding="6dp"
-        android:gravity="left"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:text="Ommabop"
-        android:textColor="@drawable/text_title_clicked"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_title_worldHistory"
-        app:layout_constraintTop_toBottomOf="@+id/rv_library_worldHistory" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_title_worldHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:gravity="left"
+                android:text="Jahon adabiyoti"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_showAll_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:drawableRight="@drawable/ic_arrows_right"
+                android:drawablePadding="4dp"
+                android:focusable="true"
+                android:text="Barchasi"
+                android:textColor="@drawable/text_show_all_clicked"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_worldHistory"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_worldHistory" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_library_worldHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:paddingLeft="4dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_worldHistory"
+                app:spanCount="1"
+                tools:listitem="@layout/item_library_book" />
+
+            <TextView
+                android:id="@+id/tv_title_popular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="left"
+                android:text="Ommabop"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tv_title_worldHistory"
+                app:layout_constraintTop_toBottomOf="@+id/rv_library_worldHistory" />
+
+            <TextView
+                android:id="@+id/tv_showAll_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:drawableRight="@drawable/ic_arrows_right"
+                android:drawablePadding="4dp"
+                android:focusable="true"
+                android:text="Barchasi"
+                android:textColor="@drawable/text_show_all_clicked"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title_popular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_title_popular" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_library_popular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:paddingLeft="4dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_popular"
+                app:spanCount="1"
+                tools:listitem="@layout/item_library_book" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_library_popular"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_popular"
-        app:spanCount="1"
-        tools:listitem="@layout/item_library_book" />
+    </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

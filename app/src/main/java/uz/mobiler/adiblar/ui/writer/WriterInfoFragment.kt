@@ -197,7 +197,7 @@ class WriterInfoFragment : Fragment() {
 
         root.et_search.addTextChangedListener { item ->
             if (item.toString().length > 1) {
-                setHighLightedText(root.tv_info, item.toString())
+                setHighLightedText(root.expandable_text, item.toString())
             } else {
                 root.tv_info.text = desc
             }

@@ -49,15 +49,16 @@
 
         <TextView
             android:id="@+id/tv_bookName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
-            android:layout_marginStart="4dp"
-            android:text="Oʻtkan kunlar"
-            android:textColor="#1B1B1B"
-            android:maxLines="2"
             android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Oʻtkan kunlar"
+            app:layout_constraintHorizontal_bias="0"
+            android:textColor="#1B1B1B"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
@@ -73,6 +74,31 @@
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/tv_bookName"
             app:layout_constraintTop_toBottomOf="@+id/tv_bookName" />
+
+        <LinearLayout
+            android:id="@+id/like_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/like_background"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_bookName">
+
+            <com.like.LikeButton
+                android:id="@+id/like_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:circle_end_color="@color/myColor"
+                app:circle_start_color="@color/myColor"
+                app:dots_primary_color="@color/myColor"
+                app:dots_secondary_color="@color/myColor"
+                app:icon_size="10dp"
+                app:like_drawable="@drawable/ic_bookmark"
+                app:unlike_drawable="@drawable/ic_vector2" />
+        </LinearLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.FragmentBookBinding
-import uz.mobiler.adiblar.databinding.FragmentLibraryBinding
 import uz.mobiler.adiblar.models.Book
 
 
@@ -27,9 +27,9 @@ class BookFragment : Fragment() {
         val book = arguments?.getSerializable("book") as Book
 
         book.apply {
-            binding.tvAuthor.text = author
+            binding.tvBookName.text = name
+            binding.tvAuthorName.text = author
             binding.tvDesc.text = desc
-            binding.tvName.text = name
             binding.tvGenre.text = genre
 
             Picasso.get().load(image)
@@ -38,6 +38,9 @@ class BookFragment : Fragment() {
                 .into(binding.ivBook)
         }
 
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         return binding.root
     }
 
