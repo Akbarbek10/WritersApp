@@ -16,12 +16,9 @@
         android:textColor="@color/grey"
         android:textSize="32sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        android:layout_margin="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
@@ -30,28 +27,75 @@
         android:layout_height="50dp"
         android:clickable="true"
         android:focusable="true"
+        android:layout_margin="16dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:src="@drawable/ic_search"
         app:layout_constraintBottom_toBottomOf="@id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintTop_toTopOf="@id/tv_title" />
+
+
+    <TextView
+        android:id="@+id/tv_title_worldHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:drawablePadding="6dp"
+        android:gravity="left"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="Jahon adabiyoti"
+        android:textColor="@drawable/text_title_clicked"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_title"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_library"
+        android:id="@+id/rv_library_worldHistory"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="15dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="4dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        app:spanCount="2"
-        tools:listitem="@layout/item_book" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_worldHistory"
+        app:spanCount="1"
+        tools:listitem="@layout/item_library_book" />
+
+    <TextView
+        android:id="@+id/tv_title_popular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:drawableEnd="@drawable/ic_arrow_right"
+        android:drawablePadding="6dp"
+        android:gravity="left"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:text="Ommabop"
+        android:textColor="@drawable/text_title_clicked"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tv_title_worldHistory"
+        app:layout_constraintTop_toBottomOf="@+id/rv_library_worldHistory" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_library_popular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_popular"
+        app:spanCount="1"
+        tools:listitem="@layout/item_library_book" />
 </androidx.constraintlayout.widget.ConstraintLayout>

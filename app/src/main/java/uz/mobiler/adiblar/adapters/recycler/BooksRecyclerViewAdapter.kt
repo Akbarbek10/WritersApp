@@ -15,6 +15,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_writer.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.ItemBookBinding
+import uz.mobiler.adiblar.databinding.ItemLibraryBookBinding
 import uz.mobiler.adiblar.models.Book
 
 class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
@@ -34,12 +35,12 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
 
     val differ = AsyncListDiffer(this, itemCallback)
 
-    inner class VH(private val binding: ItemBookBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class VH(private val binding: ItemLibraryBookBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(book: Book?) {
 
             book?.apply {
-                binding.tvName.text = name
-                binding.tvAuthor.text = author
+                binding.tvBookName.text = name
+                binding.tvAuthorName.text = author
 
                 Picasso.get().load(image)
                     .placeholder(R.drawable.place_holder)
@@ -51,20 +52,20 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
                 book?.let { b -> onClick(b) }
             }
 
-            binding.likeBtn.setOnLikeListener(object : OnLikeListener {
-                override fun liked(likeButton: LikeButton?) {
-                    itemView.like_back.setBackgroundResource(R.drawable.unlike_background)
-                }
-
-                override fun unLiked(likeButton: LikeButton?) {
-                    itemView.like_back.setBackgroundResource(R.drawable.like_background)
-                }
-            })
+//            binding.likeBtn.setOnLikeListener(object : OnLikeListener {
+//                override fun liked(likeButton: LikeButton?) {
+//                    itemView.like_back.setBackgroundResource(R.drawable.unlike_background)
+//                }
+//
+//                override fun unLiked(likeButton: LikeButton?) {
+//                    itemView.like_back.setBackgroundResource(R.drawable.like_background)
+//                }
+//            })
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        VH(ItemBookBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        VH(ItemLibraryBookBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         setAnimation(holder.itemView, position, holder.itemView.context.applicationContext)
@@ -76,8 +77,10 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
 
     private fun setAnimation(viewToAnimate: View, position: Int, context: Context) {
         if (position > lastPosition) {
+//            val animation: Animation =
+//                AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
             val animation: Animation =
-                AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
+                AnimationUtils.loadAnimation(context, R.anim.item_animation_from_right)
             viewToAnimate.startAnimation(animation)
             lastPosition = position
         }
