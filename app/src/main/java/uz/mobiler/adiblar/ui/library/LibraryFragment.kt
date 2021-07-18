@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_writers.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.BooksRecyclerViewAdapter
 import uz.mobiler.adiblar.databinding.FragmentLibraryBinding
@@ -56,6 +57,10 @@ class LibraryFragment : Fragment() {
             }
         })
 
+        binding.ivSearch.setOnClickListener {
+            val bundle = Bundle()
+            findNavController().navigate(R.id.bookSearchFragment)
+        }
 
         binding.rvLibraryWorldHistory.adapter = adapter
         binding.rvLibraryPopular.adapter = adapter
