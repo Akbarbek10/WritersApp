@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_back"
-    tools:context=".ui.search.SearchFragment">
+    tools:context=".ui.search.BookSearchFragment">
 
     <LinearLayout
         android:id="@+id/layout"
@@ -15,7 +15,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@id/rv_writers"
+        app:layout_constraintBottom_toTopOf="@id/rv_book_list"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_writers"
+        android:id="@+id/rv_book_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingTop="10dp"
@@ -51,23 +51,22 @@
         android:paddingRight="15dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/adView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout"
-        app:layout_constraintVertical_bias="1"
         app:spanCount="2"
-        tools:listitem="@layout/item_writer" />
+        tools:listitem="@layout/item_book" />
 
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:adSize="SMART_BANNER"
-        app:adUnitId="ca-app-pub-9972961616661898/9885284299"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_writers" />
+<!--    <com.google.android.gms.ads.AdView-->
+<!--        android:id="@+id/adView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        app:adSize="SMART_BANNER"-->
+<!--        app:adUnitId="ca-app-pub-9972961616661898/9885284299"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/rv_book_list" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
