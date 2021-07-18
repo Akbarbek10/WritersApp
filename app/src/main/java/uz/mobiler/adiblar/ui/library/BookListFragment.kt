@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import uz.mobiler.adiblar.adapters.recycler.BooksRecyclerViewAdapter
 import uz.mobiler.adiblar.databinding.FragmentBookListBinding
+import uz.mobiler.adiblar.models.Book
+import uz.mobiler.adiblar.models.Writer
 
 
 class BookListFragment : Fragment() {
