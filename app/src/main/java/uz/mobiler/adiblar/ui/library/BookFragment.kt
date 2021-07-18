@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.like.LikeButton
+import com.like.OnLikeListener
 import com.squareup.picasso.Picasso
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.FragmentBookBinding
@@ -41,6 +43,17 @@ class BookFragment : Fragment() {
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        binding.likeBtn.setOnLikeListener(object : OnLikeListener {
+            override fun liked(likeButton: LikeButton?) {
+                binding.likeBack.setBackgroundResource(R.drawable.unlike_background)
+            }
+
+            override fun unLiked(likeButton: LikeButton?) {
+                binding.likeBack.setBackgroundResource(R.drawable.like_background)
+            }
+        })
+
         return binding.root
     }
 

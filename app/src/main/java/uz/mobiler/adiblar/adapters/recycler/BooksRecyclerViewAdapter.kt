@@ -51,16 +51,6 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
             binding.root.setOnClickListener {
                 book?.let { b -> onClick(b) }
             }
-
-//            binding.likeBtn.setOnLikeListener(object : OnLikeListener {
-//                override fun liked(likeButton: LikeButton?) {
-//                    itemView.like_back.setBackgroundResource(R.drawable.unlike_background)
-//                }
-//
-//                override fun unLiked(likeButton: LikeButton?) {
-//                    itemView.like_back.setBackgroundResource(R.drawable.like_background)
-//                }
-//            })
         }
     }
 
