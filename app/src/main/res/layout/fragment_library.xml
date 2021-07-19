@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:fontFamily="@font/sfpro"
-        android:text="Badiiy\nadabiyotlar"
+        android:text="Elektron\nKutubxona"
         android:textColor="@color/grey"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -34,106 +34,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_title" />
 
-    <ScrollView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main_categories"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tv_title_worldHistory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="25dp"
-                android:gravity="left"
-                android:text="Jahon adabiyoti"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_showAll_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:clickable="true"
-                android:drawableRight="@drawable/ic_arrows_right"
-                android:drawablePadding="4dp"
-                android:focusable="true"
-                android:text="Barchasi"
-                android:textColor="@drawable/text_show_all_clicked"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_title_worldHistory"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_title_worldHistory" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_library_worldHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal"
-                android:paddingLeft="4dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_worldHistory"
-                app:spanCount="1"
-                tools:listitem="@layout/item_library_book" />
-
-            <TextView
-                android:id="@+id/tv_title_popular"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="left"
-                android:text="Ommabop"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_title_worldHistory"
-                app:layout_constraintTop_toBottomOf="@+id/rv_library_worldHistory" />
-
-            <TextView
-                android:id="@+id/tv_showAll_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:clickable="true"
-                android:drawableRight="@drawable/ic_arrows_right"
-                android:drawablePadding="4dp"
-                android:focusable="true"
-                android:text="Barchasi"
-                android:textColor="@drawable/text_show_all_clicked"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_title_popular"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tv_title_popular" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_library_popular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal"
-                android:paddingLeft="4dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_popular"
-                app:spanCount="1"
-                tools:listitem="@layout/item_library_book" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </ScrollView>
-
-
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        tools:listitem="@layout/item_main_category" />
 </androidx.constraintlayout.widget.ConstraintLayout>

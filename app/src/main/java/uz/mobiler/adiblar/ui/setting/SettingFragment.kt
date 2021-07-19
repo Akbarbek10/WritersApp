@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.dialog.view.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
@@ -113,6 +114,10 @@ class SettingFragment : Fragment() {
             alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             alertDialog.window?.setGravity(Gravity.CENTER)
             alertDialog.show()
+        }
+
+        root.btn_back.setOnClickListener {
+            findNavController().popBackStack()
         }
 
         return root

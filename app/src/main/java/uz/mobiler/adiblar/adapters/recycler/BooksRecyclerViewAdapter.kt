@@ -9,12 +9,8 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.like.LikeButton
-import com.like.OnLikeListener
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_writer.view.*
 import uz.mobiler.adiblar.R
-import uz.mobiler.adiblar.databinding.ItemBookBinding
 import uz.mobiler.adiblar.databinding.ItemLibraryBookBinding
 import uz.mobiler.adiblar.models.Book
 
@@ -35,7 +31,8 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
 
     val differ = AsyncListDiffer(this, itemCallback)
 
-    inner class VH(private val binding: ItemLibraryBookBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class VH(private val binding: ItemLibraryBookBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun onBind(book: Book?) {
 
             book?.apply {

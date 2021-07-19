@@ -1,17 +1,25 @@
 package uz.mobiler.adiblar.ui.library
 
+import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.downloader.Error
+import com.downloader.OnDownloadListener
+import com.downloader.PRDownloader
+import com.downloader.PRDownloaderConfig
 import com.like.LikeButton
 import com.like.OnLikeListener
 import com.squareup.picasso.Picasso
 import uz.mobiler.adiblar.R
+import uz.mobiler.adiblar.databinding.DialogDownloadBinding
 import uz.mobiler.adiblar.databinding.FragmentBookBinding
 import uz.mobiler.adiblar.models.Book
+import java.util.*
 
 
 class BookFragment : Fragment() {
@@ -25,6 +33,11 @@ class BookFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentBookBinding.inflate(inflater, container, false)
+
+        val config = PRDownloaderConfig.newBuilder()
+            .setDatabaseEnabled(true)
+            .build()
+        PRDownloader.initialize(binding.root.context.applicationContext, config)
 
         val book = arguments?.getSerializable("book") as Book
 
@@ -53,6 +66,41 @@ class BookFragment : Fragment() {
                 binding.likeBack.setBackgroundResource(R.drawable.like_background)
             }
         })
+
+        val path = binding.root.context.filesDir.path
+        
+        binding.cardDownload.setOnClickListener {
+            val alertDialog = AlertDialog.Builder(binding.root.context).create()
+
+            val view = DialogDownloadBinding.inflate(layoutInflater, null, false)
+            alertDialog.setView(view.root)
+
+
+            PRDownloader.download(book.url, path, "${book.name}.pdf").build()
+                .setOnProgressListener {
+                    view.progressCircular.progressMax = it.totalBytes.toFloat()
+                    view.progressCircular.progress = it.currentBytes.toFloat()
+                }
+                .start(object : OnDownloadListener {
+                    override fun onDownloadComplete() {
+                        alertDialog.dismiss()
+                        Toast.makeText(view.root.context, "Yuklab olindi", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                    override fun onError(error: Error?) {
+                        alertDialog.dismiss()
+                        Toast.makeText(
+                            view.root.context,
+                            "${error?.serverErrorMessage}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    }
+                })
+
+            alertDialog.show()
+        }
 
         return binding.root
     }

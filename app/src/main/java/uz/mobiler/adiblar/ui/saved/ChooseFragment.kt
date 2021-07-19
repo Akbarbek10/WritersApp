@@ -35,10 +35,16 @@ class ChooseFragment : Fragment() {
         super.onResume()
         MySharedPreference.init(root.context)
         setLocale()
-        root.tv_savedWriters.text=getString(R.string.saqlangan_nadiblar)
+        root.tv_savedWriters.text = getString(R.string.saqlangan_nadiblar)
 
         myDBHelper = MyDBHelper(root.context)
         writerList = myDBHelper.getAllWriters() as ArrayList<Writer>
+
+        if (writerList.isEmpty()) {
+            root.tv_noData.visibility = View.VISIBLE
+        }else{
+            root.tv_noData.visibility = View.GONE
+        }
 
         recyclerViewAdapter =
             RecyclerViewAdapter(writerList, object : RecyclerViewAdapter.OnItemClick {

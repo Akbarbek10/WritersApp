@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import uz.mobiler.adiblar.utils.MySharedPreference
 import java.util.*
 
@@ -22,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         }
-
         setContentView(R.layout.activity_main)
 
         MobileAds.initialize(this) {}
@@ -32,6 +36,23 @@ class MainActivity : AppCompatActivity() {
         MobileAds.setRequestConfiguration(configuration)
 
         setLocale()
+
+        Dexter.withContext(this).withPermissions(
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ).withListener(object : MultiplePermissionsListener {
+            override fun onPermissionsChecked(p0: MultiplePermissionsReport?) {
+
+            }
+
+            override fun onPermissionRationaleShouldBeShown(
+                p0: MutableList<PermissionRequest>?,
+                p1: PermissionToken?
+            ) {
+                p1?.continuePermissionRequest()
+            }
+
+        }).check()
     }
 
     override fun onResume() {
