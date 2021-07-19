@@ -11,27 +11,25 @@
         android:id="@+id/layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="@drawable/tab_layout_background"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@id/rv_book_list"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintWidth_percent="0.9">
 
         <EditText
             android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@color/backgroundWhite"
             android:fontFamily="@font/sfpro"
             android:hint="@string/qidruv"
-            android:layout_marginEnd="5dp"
             android:inputType="textAutoComplete"
             android:textColor="@color/grey" />
 
@@ -42,31 +40,54 @@
             android:src="@drawable/ic_cancel" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/spinner_left"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:drawableRight="@drawable/ic_bookmark"
+        app:layout_constraintWidth_percent="0.45"
+        app:layout_constraintEnd_toStartOf="@+id/spinner_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout" />
+
+    <Button
+        android:id="@+id/spinner_right"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinner_left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/spinner_left"
+        app:layout_constraintTop_toTopOf="@+id/spinner_left"
+        android:drawableRight="@drawable/ic_bookmark"
+        app:layout_constraintWidth_percent="0.45" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_book_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:layout_marginTop="5dp"
+        android:paddingRight="15dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout"
+        app:layout_constraintTop_toBottomOf="@id/spinner_left"
         app:spanCount="2"
         tools:listitem="@layout/item_book" />
 
 
-<!--    <com.google.android.gms.ads.AdView-->
-<!--        android:id="@+id/adView"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        app:adSize="SMART_BANNER"-->
-<!--        app:adUnitId="ca-app-pub-9972961616661898/9885284299"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/rv_book_list" />-->
+    <!--    <com.google.android.gms.ads.AdView-->
+    <!--        android:id="@+id/adView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="10dp"-->
+    <!--        app:adSize="SMART_BANNER"-->
+    <!--        app:adUnitId="ca-app-pub-9972961616661898/9885284299"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/rv_book_list" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

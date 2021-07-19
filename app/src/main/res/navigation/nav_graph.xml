@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_homeFragment_to_bookListFragment"
             app:destination="@id/bookListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookSearchFragment"
+            app:destination="@id/bookSearchFragment" />
     </fragment>
     <fragment
         android:id="@+id/writerInfoFragment"
@@ -62,4 +65,9 @@
         android:name="uz.mobiler.adiblar.ui.library.BookListFragment"
         android:label="fragment_book_list"
         tools:layout="@layout/fragment_book_list" />
+    <fragment
+        android:id="@+id/bookSearchFragment"
+        android:name="uz.mobiler.adiblar.ui.search.BookSearchFragment"
+        android:label="fragment_book_search"
+        tools:layout="@layout/fragment_book_search" />
 </navigation>
