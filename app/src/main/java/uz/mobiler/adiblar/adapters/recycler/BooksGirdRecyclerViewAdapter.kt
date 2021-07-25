@@ -12,10 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.ItemLibraryBookBinding
+import uz.mobiler.adiblar.databinding.ItemLibraryGridBookBinding
 import uz.mobiler.adiblar.models.Book
 
-class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
-    RecyclerView.Adapter<BooksRecyclerViewAdapter.VH>() {
+class BooksGirdRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
+    RecyclerView.Adapter<BooksGirdRecyclerViewAdapter.VH>() {
 
     private var lastPosition = -1
 
@@ -31,7 +32,7 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
 
     val differ = AsyncListDiffer(this, itemCallback)
 
-    inner class VH(private val binding: ItemLibraryBookBinding) :
+    inner class VH(private val binding: ItemLibraryGridBookBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(book: Book?) {
             binding.tvBookName.isSelected = true
@@ -54,7 +55,7 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        VH(ItemLibraryBookBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        VH(ItemLibraryGridBookBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         setAnimation(holder.itemView, position, holder.itemView.context.applicationContext)
@@ -66,9 +67,7 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
 
     private fun setAnimation(viewToAnimate: View, position: Int, context: Context) {
         if (position > lastPosition) {
-//            val animation: Animation =
-//                AnimationUtils.loadAnimation(context, R.anim.item_animation_fall_down)
-            val animation: Animation =
+           val animation: Animation =
                 AnimationUtils.loadAnimation(context, R.anim.item_animation_from_right)
             viewToAnimate.startAnimation(animation)
             lastPosition = position

@@ -51,6 +51,13 @@ class SettingFragment : Fragment() {
 
         root.themeSwitch.isChecked = MySharedPreference.darkMode!!
 
+        if (MySharedPreference.darkMode!!) {
+            root.tv_darkTheme.text = getString(R.string.night)
+
+        } else {
+            root.tv_darkTheme.text = getString(R.string.day)
+        }
+
         root.themeSwitch.addSwitchObserver { switchView, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

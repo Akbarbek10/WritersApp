@@ -17,7 +17,10 @@ import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.ItemMainCategoryBinding
 import uz.mobiler.adiblar.models.Book
 
-class BooksMainCategoryRecyclerAdapter(val onClick: (book: Book) -> Unit) :
+class BooksMainCategoryRecyclerAdapter(
+    val onClick: (book: Book) -> Unit,
+    val onBooksClick: (s: String) -> Unit
+) :
     RecyclerView.Adapter<BooksMainCategoryRecyclerAdapter.VH>() {
 
     private var lastPosition = -1
@@ -47,8 +50,8 @@ class BooksMainCategoryRecyclerAdapter(val onClick: (book: Book) -> Unit) :
             firebaseDatabase.getReference("library/$s")
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val arrayList = arrayListOf<Book>()
                         binding.tvCount.text = "${snapshot.childrenCount.toInt()}"
+                        val arrayList = arrayListOf<Book>()
                         snapshot.children.forEach {
                             val value = it.getValue(Book::class.java)
                             if (value != null) {
@@ -63,6 +66,10 @@ class BooksMainCategoryRecyclerAdapter(val onClick: (book: Book) -> Unit) :
                     }
 
                 })
+
+            binding.tvAll.setOnClickListener {
+                onBooksClick(s)
+            }
 
             binding.rvBooks.adapter = adapter
         }

@@ -32,11 +32,15 @@ class LibraryFragment : Fragment() {
 
         firebaseDatabase = FirebaseDatabase.getInstance()
 
-        adapter = BooksMainCategoryRecyclerAdapter {
+        adapter = BooksMainCategoryRecyclerAdapter({
             val bundle = Bundle()
             bundle.putSerializable("book", it)
             findNavController().navigate(R.id.bookFragment, bundle)
-        }
+        }, {
+            val bundle = Bundle()
+            bundle.putString("category", it)
+            findNavController().navigate(R.id.bookSearchFragment, bundle)
+        })
 
 
         databaseReference = firebaseDatabase.getReference("library")

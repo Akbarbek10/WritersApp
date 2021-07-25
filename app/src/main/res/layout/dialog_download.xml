@@ -13,18 +13,19 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         app:cpb_background_progressbar_color="#b6bbd8"
-        app:cpb_background_progressbar_width="5dp"
+        app:cpb_background_progressbar_width="4dp"
         app:cpb_progress_direction="to_right"
         app:cpb_progressbar_color="@color/myColor"
-        app:cpb_progressbar_width="6dp"
+        app:cpb_progressbar_width="5dp"
         app:cpb_round_border="true" />
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:fontFamily="@font/poppins_bold"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/poppins"
         android:text="Yuklanmoqda . . . "
         android:textColor="@color/grey"
         android:textSize="18sp" />

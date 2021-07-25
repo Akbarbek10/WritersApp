@@ -1,7 +1,13 @@
 package uz.mobiler.adiblar.ui.library
 
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.os.StrictMode
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +25,7 @@ import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.DialogDownloadBinding
 import uz.mobiler.adiblar.databinding.FragmentBookBinding
 import uz.mobiler.adiblar.models.Book
+import java.io.File
 import java.util.*
 
 
@@ -33,6 +40,16 @@ class BookFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentBookBinding.inflate(inflater, container, false)
+
+        val downloadFolder =
+            binding.root.context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)
+
+        val path = downloadFolder?.path
+
+        val builder = StrictMode.VmPolicy.Builder()
+        StrictMode.setVmPolicy(builder.build())
+        builder.detectFileUriExposure()
+
 
         val config = PRDownloaderConfig.newBuilder()
             .setDatabaseEnabled(true)
@@ -53,6 +70,15 @@ class BookFragment : Fragment() {
                 .into(binding.ivBook)
         }
 
+        val listFiles: Array<File>? = downloadFolder?.listFiles()
+
+        listFiles?.forEach { file ->
+            if (file.name.contains(book.name!!, true)) {
+                binding.cardDownload.visibility = View.GONE
+                binding.cardRead.visibility = View.VISIBLE
+            }
+        }
+
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -67,14 +93,22 @@ class BookFragment : Fragment() {
             }
         })
 
-        val path = binding.root.context.filesDir.path
-        
+        binding.cardRead.setOnClickListener {
+            val listFiles1 = downloadFolder?.listFiles()
+            listFiles1?.forEach { file ->
+                if (file.name.contains(book.name!!, true)) {
+                    openPDF(path!!, book.name)
+                }
+            }
+        }
+
         binding.cardDownload.setOnClickListener {
             val alertDialog = AlertDialog.Builder(binding.root.context).create()
 
             val view = DialogDownloadBinding.inflate(layoutInflater, null, false)
             alertDialog.setView(view.root)
 
+            alertDialog.setCancelable(false)
 
             PRDownloader.download(book.url, path, "${book.name}.pdf").build()
                 .setOnProgressListener {
@@ -86,6 +120,8 @@ class BookFragment : Fragment() {
                         alertDialog.dismiss()
                         Toast.makeText(view.root.context, "Yuklab olindi", Toast.LENGTH_SHORT)
                             .show()
+                        binding.cardDownload.visibility = View.GONE
+                        binding.cardRead.visibility = View.VISIBLE
                     }
 
                     override fun onError(error: Error?) {
@@ -103,6 +139,25 @@ class BookFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun openPDF(path: String, name: String) {
+        val file =
+            File("$path/$name.pdf")
+        val uri: Uri = Uri.fromFile(file)
+        val target = Intent(Intent.ACTION_VIEW)
+        target.setDataAndType(uri, "application/pdf")
+        target.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
+        val intent = Intent.createChooser(target, "Open File with PDF VIEWER")
+        try {
+            activity?.startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(
+                binding.root.context,
+                "Kitobni ochishda xatolik !",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onDestroyView() {
