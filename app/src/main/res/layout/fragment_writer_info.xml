@@ -138,7 +138,6 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/ic_cancel" />
             </LinearLayout>
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

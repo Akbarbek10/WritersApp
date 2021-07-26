@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.BooksMainCategoryRecyclerAdapter
 import uz.mobiler.adiblar.adapters.recycler.BooksRecyclerViewAdapter
@@ -41,6 +42,8 @@ class LibraryFragment : Fragment() {
             bundle.putString("category", it)
             findNavController().navigate(R.id.bookSearchFragment, bundle)
         })
+        OverScrollDecoratorHelper.setUpOverScroll(binding.rvMainCategories, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
+
 
 
         databaseReference = firebaseDatabase.getReference("library")
@@ -60,8 +63,8 @@ class LibraryFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
-
         binding.rvMainCategories.adapter = adapter
+
 
         return binding.root
     }

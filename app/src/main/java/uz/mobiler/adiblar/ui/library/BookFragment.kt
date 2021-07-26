@@ -21,6 +21,7 @@ import com.downloader.PRDownloaderConfig
 import com.like.LikeButton
 import com.like.OnLikeListener
 import com.squareup.picasso.Picasso
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.DialogDownloadBinding
 import uz.mobiler.adiblar.databinding.FragmentBookBinding
@@ -40,6 +41,7 @@ class BookFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentBookBinding.inflate(inflater, container, false)
+        OverScrollDecoratorHelper.setUpOverScroll(binding.scrollView)
 
         val downloadFolder =
             binding.root.context.applicationContext.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS)

@@ -16,4 +16,5 @@
     <color name="smoothIcon">#80FFFFFF</color>
     <color name="smoothBack">#131415</color>
     <color name="mark_color">#B10000</color>
+    <color name="shimmer_color">#F7F7F7</color>
 </resources>

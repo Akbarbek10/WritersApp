@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_writer_data.view.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.RecyclerViewAdapter
 import uz.mobiler.adiblar.models.Writer
@@ -82,6 +83,7 @@ class WriterDataFragment : Fragment() {
                         }
 
                     }, root.context, 0)
+                OverScrollDecoratorHelper.setUpOverScroll(root.rv_writers, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
                 root.rv_writers.adapter = recyclerViewAdapter
             }
         })

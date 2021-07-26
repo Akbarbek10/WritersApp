@@ -20,6 +20,7 @@ class BookListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentBookListBinding.inflate(inflater, container, false)
+//        OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
 
 
         return binding.root

@@ -9,10 +9,13 @@ import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_writer.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.ItemLibraryBookBinding
 import uz.mobiler.adiblar.models.Book
+import java.lang.Exception
 
 class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
     RecyclerView.Adapter<BooksRecyclerViewAdapter.VH>() {
@@ -34,17 +37,32 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
     inner class VH(private val binding: ItemLibraryBookBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(book: Book?) {
+            binding.shimmerFrameLayout.startShimmer()
+            binding.shimmerContainer.visibility = View.VISIBLE
+            binding.mainContainer.visibility = View.GONE
             binding.tvBookName.isSelected = true
 
             book?.apply {
-
                 binding.tvBookName.text = name
                 binding.tvAuthorName.text = author
 
+
                 Picasso.get().load(image)
-                    .placeholder(R.drawable.place_holder)
-                    .error(R.drawable.error_image)
-                    .into(binding.ivBook)
+                    .error(R.drawable.error_image).into(binding.ivBook, object: Callback {
+                        override fun onSuccess() {
+                            binding.shimmerFrameLayout.stopShimmer()
+                            binding.shimmerContainer.visibility = View.GONE
+                            binding.mainContainer.visibility = View.VISIBLE
+                        }
+
+                        override fun onError(e: Exception?) {
+                            binding.shimmerFrameLayout.stopShimmer()
+                            binding.shimmerContainer.visibility = View.GONE
+                            binding.mainContainer.visibility = View.VISIBLE
+                            binding.ivBook.setBackgroundResource(R.drawable.error_image)
+                        }
+
+                    })
             }
 
             binding.root.setOnClickListener {

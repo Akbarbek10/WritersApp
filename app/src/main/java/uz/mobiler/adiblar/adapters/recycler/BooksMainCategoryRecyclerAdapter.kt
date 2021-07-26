@@ -13,6 +13,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.ItemMainCategoryBinding
 import uz.mobiler.adiblar.models.Book
@@ -72,6 +73,8 @@ class BooksMainCategoryRecyclerAdapter(
             }
 
             binding.rvBooks.adapter = adapter
+            OverScrollDecoratorHelper.setUpOverScroll(binding.rvBooks, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL)
+
         }
     }
 

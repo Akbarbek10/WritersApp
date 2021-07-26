@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_choose.view.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.RecyclerViewAdapter
 import uz.mobiler.adiblar.database.MyDBHelper
@@ -61,6 +62,7 @@ class ChooseFragment : Fragment() {
             findNavController().navigate(R.id.searchFragment, bundle)
         }
         root.rv_writers.adapter = recyclerViewAdapter
+        OverScrollDecoratorHelper.setUpOverScroll(root.rv_writers, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
     }
 
     private fun setLocale() {

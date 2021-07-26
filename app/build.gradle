@@ -70,4 +70,7 @@ dependencies {
     implementation 'com.karumi:dexter:6.2.3'
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    implementation 'com.facebook.shimmer:shimmer:0.5.0' //shimmer dependency
+    implementation 'io.github.everythingme:overscroll-decor-android:1.1.1' //overscroll dependency
 }

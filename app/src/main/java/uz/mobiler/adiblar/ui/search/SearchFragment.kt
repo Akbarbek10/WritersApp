@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_search.view.*
 import kotlinx.android.synthetic.main.fragment_search.view.rv_writers
 import kotlinx.android.synthetic.main.fragment_writer_data.view.*
 import kotlinx.android.synthetic.main.fragment_writers.view.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.RecyclerViewAdapter
 import uz.mobiler.adiblar.database.MyDBHelper
@@ -132,8 +133,8 @@ class SearchFragment : Fragment(), RecyclerViewAdapter.OnItemClick {
                 }
             }
         }
-
-
+       
+        OverScrollDecoratorHelper.setUpOverScroll(root.rv_writers, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
         return root
     }
 

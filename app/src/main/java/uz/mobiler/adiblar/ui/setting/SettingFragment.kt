@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.gms.ads.AdRequest
 import kotlinx.android.synthetic.main.dialog.view.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.MainActivity
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.utils.MySharedPreference
@@ -29,8 +30,8 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         root = inflater.inflate(R.layout.fragment_setting, container, false)
+        OverScrollDecoratorHelper.setUpOverScroll(root.scrollView);
 
         MySharedPreference.init(root.context)
 

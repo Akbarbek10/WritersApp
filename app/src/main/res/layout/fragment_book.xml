@@ -13,11 +13,14 @@
         android:layout_height="40dp"
         android:layout_margin="20dp"
         android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
         android:padding="5dp"
         android:src="@drawable/ic_arrow_right"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/grey" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -75,7 +78,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/card_book"
         android:layout_width="0dp"
@@ -98,7 +100,6 @@
             android:background="@drawable/ic_launcher_background"
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
-
 
     <TextView
         android:id="@+id/tv_bookName"
@@ -131,63 +132,81 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_bookName"
         app:layout_constraintWidth_percent="0.3" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/sfpro"
-        android:gravity="center_vertical"
-        android:text="Kitob haqida"
-        android:textColor="@color/grey"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_desc"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/genre_corners"
-        android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintLeft_toRightOf="@id/textView"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_genre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BOOK_GENRE"
-            android:textSize="14sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/sfpro"
+                android:gravity="center_vertical"
+                android:text="Kitob haqida"
+                android:textColor="@color/grey"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tv_desc"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_desc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/sfpro"
-        android:gravity="center_vertical"
-        android:maxLines="12"
-        android:text="Aziz kitobxon! Qo'lingizdagi Shohchorbog\' tongi hikoyalar to\'plamdan turli mavzularda, turli uslublarda, bir-biridan mahoratli adiblar tomonidan yozilgan ijod namunalari joy olgan. O'ylaymizki, kitob sizga ma'qul bo'ladi."
-        android:textColor="@color/grey"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintWidth_percent="0.9" />
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/genre_corners"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintLeft_toRightOf="@id/textView"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView">
+
+                <TextView
+                    android:id="@+id/tv_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BOOK_GENRE"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/sfpro"
+                android:gravity="center_vertical"
+                android:maxLines="12"
+                android:text="Aziz kitobxon! Qo'lingizdagi Shohchorbog\' tongi hikoyalar to\'plamdan turli mavzularda, turli uslublarda, bir-biridan mahoratli adiblar tomonidan yozilgan ijod namunalari joy olgan. O'ylaymizki, kitob sizga ma'qul bo'ladi."
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintWidth_percent="0.9" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_download"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
@@ -197,7 +216,6 @@
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_desc"
         app:layout_constraintVertical_bias="0.8"
         app:layout_constraintWidth_percent="0.8">
 
@@ -227,11 +245,11 @@
 
     </androidx.cardview.widget.CardView>
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/card_read"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
@@ -242,7 +260,6 @@
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_desc"
         app:layout_constraintVertical_bias="0.8"
         app:layout_constraintWidth_percent="0.8">
 
@@ -271,4 +288,6 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

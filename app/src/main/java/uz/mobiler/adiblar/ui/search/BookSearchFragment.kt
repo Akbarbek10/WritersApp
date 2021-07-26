@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.fragment_book_search.view.*
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.adapters.recycler.BooksGirdRecyclerViewAdapter
 import uz.mobiler.adiblar.adapters.recycler.BooksRecyclerViewAdapter
@@ -62,11 +63,12 @@ class BookSearchFragment : Fragment() {
             })
 
         binding.rvBookList.adapter = adapter
+        OverScrollDecoratorHelper.setUpOverScroll(binding.rvBookList, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
         }
-        
+
         return binding.root
     }
 
