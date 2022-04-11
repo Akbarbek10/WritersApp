@@ -25,15 +25,17 @@
 
         <EditText
             android:id="@+id/et_search"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/backgroundWhite"
             android:fontFamily="@font/sfpro"
-            android:hint="@string/qidruv"
-            android:layout_marginEnd="5dp"
+            android:hint="@string/qidiruv"
+            android:layout_marginEnd="6dp"
+            android:layout_marginStart="6dp"
             android:inputType="textAutoComplete"
-            android:textColor="@color/grey" />
+            android:textColor="@color/grey"
+            android:textColorHint="@color/search_hint_color"/>
 
         <ImageView
             android:id="@+id/iv_cancel"
@@ -46,7 +48,7 @@
         android:id="@+id/rv_writers"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toTopOf="@id/adView"

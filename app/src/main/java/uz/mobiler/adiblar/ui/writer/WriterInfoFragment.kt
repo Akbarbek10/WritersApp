@@ -71,6 +71,18 @@ class WriterInfoFragment : Fragment() {
                 root.tv_info.text = writer.description
             }
             "ru" -> {
+                name = writer.writer
+                root.toolbar_layout.title = writer.writer
+                desc = writer.description
+                root.tv_info.text = writer.description
+            }
+            "en" -> {
+                name = writer.writer
+                root.toolbar_layout.title = writer.writer
+                desc = writer.description
+                root.tv_info.text = writer.description
+            }
+            "kr" -> {
                 name = LotinKrilService.convert(writer.writer)
                 root.toolbar_layout.title = LotinKrilService.convert(writer.writer)
                 root.tv_info.text = LotinKrilService.convert(writer.description)

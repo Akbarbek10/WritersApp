@@ -2,25 +2,47 @@
 <resources>
     <string name="app_name">Adiblar</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="saqlangan_nadiblar">Сақланган\nадиблар</string>
-    <string name="qidruv">Қидрув</string>
-    <string name="sozlamalar">Созламалар</string>
-    <string name="dark_theme">Дарк тҳеме</string>
-    <string name="dastur_tili">Дастур тили</string>
-    <string name="ulashish">Улашиш</string>
-    <string name="dastur_haqida">Дастур ҳақида</string>
-    <string name="adiblar_nhayoti_va_ijodi">Адиблар\nҳаёти ва ижоди</string>
-    <string name="mumtoz">Мумтоз адабиёт</string>
-    <string name="uzbek">Ўзбек адабиёти</string>
-    <string name="world">Жаҳон адабиёти</string>
-    <string name="adiblar">Адиблар</string>
-    <string name="saqlangan">Сақланган</string>
-    <string name="kril">Ўзбек тили</string>
-    <string name="lotin">O\'zbek tili</string>
-    <string name="tilni_tanlang">Тилни танланг</string>
-    <string name="bekor_qilish">Бекор қилиш</string>
+    <string name="saqlanganlar">Избранные</string>
+    <string name="qidiruv">Поиск</string>
+    <string name="sozlamalar">Настройки</string>
+    <string name="dastur_tili">Язык</string>
+    <string name="ulashish">Поделиться</string>
+    <string name="dastur_haqida">О нас</string>
+    <string name="adiblar_nhayoti_va_ijodi">Жизнь и творчество писателей</string>
+    <string name="mumtoz">Классическая литература</string>
+    <string name="uzbek">Узбекская литература</string>
+    <string name="world">Мировая литература</string>
+    <string name="adiblar">Писатели</string>
+    <string name="saqlangan">Сохраненные</string>
+    <string name="tilni_tanlang">Выберите язык</string>
+    <string name="bekor_qilish">Отменить</string>
     <string name="ok">Ок</string>
     <string name="interstitial">ca-app-pub-9972961616661898/4349994384</string>
-    <string name="night">Тунги режим</string>
-    <string name="day">Кундузги режим</string>
+    <string name="night">Ночной режим</string>
+    <string name="day">Дневной режим</string>
+    <string name="book_language">Язык:</string>
+    <string name="english">English</string>
+    <string name="genres">Жанры</string>
+    <string name="more">Еще</string>
+    <string name="book_description">Описание</string>
+    <string name="download_book">Скачать книгу</string>
+    <string name="no_available_data">Нет доступной информации</string>
+    <string name="library">Библиотека</string>
+    <string name="about_us_desc">Прекрасная возможность для любителей узбекской и мировой литературы.</string>
+    <string name="downloaded_msg">Загружено</string>
+    <string name="downloaded_msg_error">Ошибка при открытии книги!</string>
+    <string name="e_library">Библиотека</string>
+    <string name="fiction_txt">Фантастика</string>
+    <string name="science_education_txt">Наука и образование</string>
+    <string name="it_txt">IT индустрия</string>
+    <string name="kitoblar">Книги</string>
+    <string name="book_lang">Язык книги:</string>
+    <string name="download_process_msg">Загрузка. . .</string>
+
+    <string-array name="languages">
+        <item>Все</item>
+        <item>Английский</item>
+        <item>Русский</item>
+        <item>Узбекский</item>
+    </string-array>
 </resources>

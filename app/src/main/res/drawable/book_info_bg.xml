@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#EDEDED"/>
+    <solid android:color="@color/book_info_color"/>
     <corners android:bottomLeftRadius="32dp"/>
 </shape>

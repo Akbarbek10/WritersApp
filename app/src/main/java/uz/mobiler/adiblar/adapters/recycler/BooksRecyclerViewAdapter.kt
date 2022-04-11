@@ -15,6 +15,8 @@ import kotlinx.android.synthetic.main.item_writer.view.*
 import uz.mobiler.adiblar.R
 import uz.mobiler.adiblar.databinding.ItemLibraryBookBinding
 import uz.mobiler.adiblar.models.Book
+import uz.mobiler.adiblar.utils.LotinKrilService
+import uz.mobiler.adiblar.utils.MySharedPreference
 import java.lang.Exception
 
 class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
@@ -42,31 +44,55 @@ class BooksRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
             binding.mainContainer.visibility = View.GONE
             binding.tvBookName.isSelected = true
 
+
             book?.apply {
-                binding.tvBookName.text = name
-                binding.tvAuthorName.text = author
+                var bookName: String? = ""
+                var authorName: String? = ""
+
+                when (MySharedPreference.language) {
+                    "uz" -> {
+                        bookName = name?.uz
+                        authorName = author?.uz
+                    }
+                    "ru" -> {
+                        bookName = name?.ru
+                        authorName = author?.ru
+                    }
+                    "en" -> {
+                        bookName = name?.eng
+                        authorName = author?.eng
+                    }
+                    "kr" -> {
+                        bookName = LotinKrilService.convert(name?.uz!!)
+                        authorName = LotinKrilService.convert(author?.uz!!)
+                    }
+                }
+
+                binding.tvBookName.text = bookName
+                binding.tvAuthorName.text = authorName
 
 
-                Picasso.get().load(image)
-                    .error(R.drawable.error_image).into(binding.ivBook, object: Callback {
-                        override fun onSuccess() {
-                            binding.shimmerFrameLayout.stopShimmer()
-                            binding.shimmerContainer.visibility = View.GONE
-                            binding.mainContainer.visibility = View.VISIBLE
-                        }
+                Picasso.get().load(image).into(binding.ivBook, object : Callback {
+                    override fun onSuccess() {
+                        binding.shimmerFrameLayout.stopShimmer()
+                        binding.shimmerContainer.visibility = View.GONE
+                        binding.mainContainer.visibility = View.VISIBLE
+                    }
 
-                        override fun onError(e: Exception?) {
-                            binding.shimmerFrameLayout.stopShimmer()
-                            binding.shimmerContainer.visibility = View.GONE
-                            binding.mainContainer.visibility = View.VISIBLE
-                            binding.ivBook.setBackgroundResource(R.drawable.error_image)
-                        }
+                    override fun onError(e: Exception?) {
+                        binding.shimmerFrameLayout.stopShimmer()
+                        binding.shimmerContainer.visibility = View.GONE
+                        binding.mainContainer.visibility = View.VISIBLE
+                        binding.ivBook.setBackgroundResource(R.drawable.error_image)
+                    }
 
-                    })
+                })
             }
 
             binding.root.setOnClickListener {
-                book?.let { b -> onClick(b) }
+                book?.let { b ->
+                    onClick(b)
+                }
             }
         }
     }

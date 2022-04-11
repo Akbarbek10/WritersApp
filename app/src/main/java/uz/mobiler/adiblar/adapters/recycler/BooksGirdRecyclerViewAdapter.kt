@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import uz.mobiler.adiblar.R
-import uz.mobiler.adiblar.databinding.ItemLibraryBookBinding
 import uz.mobiler.adiblar.databinding.ItemLibraryGridBookBinding
 import uz.mobiler.adiblar.models.Book
+import uz.mobiler.adiblar.utils.LotinKrilService
+import uz.mobiler.adiblar.utils.MySharedPreference
 
 class BooksGirdRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
     RecyclerView.Adapter<BooksGirdRecyclerViewAdapter.VH>() {
@@ -35,12 +36,34 @@ class BooksGirdRecyclerViewAdapter(val onClick: (book: Book) -> Unit) :
     inner class VH(private val binding: ItemLibraryGridBookBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(book: Book?) {
-            binding.tvBookName.isSelected = true
+//            binding.tvBookName.isSelected = true
 
             book?.apply {
+                var bookName:String? = ""
+                var authorName:String? = ""
 
-                binding.tvBookName.text = name
-                binding.tvAuthorName.text = author
+                when (MySharedPreference.language) {
+                    "uz" -> {
+                        bookName = name?.uz
+                        authorName = author?.uz
+                    }
+                    "ru" -> {
+                        bookName = name?.ru
+                        authorName = author?.ru
+                    }
+                    "en" -> {
+                        bookName = name?.eng
+                        authorName = author?.eng
+                    }
+                    "kr" -> {
+                        bookName = LotinKrilService.convert(name?.uz!!)
+                        authorName = LotinKrilService.convert(author?.uz!!)
+                    }
+                }
+
+                binding.tvBookName.text = bookName
+                binding.tvAuthorName.text = authorName
+
 
                 Picasso.get().load(image)
                     .placeholder(R.drawable.place_holder)

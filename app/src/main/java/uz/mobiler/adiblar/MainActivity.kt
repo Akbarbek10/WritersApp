@@ -21,12 +21,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         MySharedPreference.init(this)
 
-        if (MySharedPreference.darkMode!!) {
+        if (MySharedPreference.darkMode!!)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
+        else
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        }
         setContentView(R.layout.activity_main)
 
         MobileAds.initialize(this) {}

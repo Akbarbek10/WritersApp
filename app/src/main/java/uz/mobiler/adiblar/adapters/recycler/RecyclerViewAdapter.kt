@@ -38,9 +38,9 @@ class RecyclerViewAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun onBind(writer: Writer, position: Int) {
             MySharedPreference.init(context)
-            itemView.shimmerFrameLayout.startShimmer()
             itemView.shimmer_container.visibility = View.VISIBLE
             itemView.main_container.visibility = View.GONE
+            itemView.shimmerFrameLayout.startShimmer()
 
             val split = writer.writer.split(" ")
             var name: String = ""
@@ -52,7 +52,9 @@ class RecyclerViewAdapter(
 
             itemView.tv_name.text = when (MySharedPreference.language) {
                 "uz" -> name
-                "ru" -> LotinKrilService.convert(name)
+                "ru" -> name
+                "en" -> name
+                "kr" -> LotinKrilService.convert(name)
                 else -> ""
             }
 

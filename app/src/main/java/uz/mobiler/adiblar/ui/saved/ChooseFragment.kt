@@ -6,63 +6,88 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_choose.view.*
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
+import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.custom_tab.view.*
+import kotlinx.android.synthetic.main.fragment_writers.view.*
 import uz.mobiler.adiblar.R
-import uz.mobiler.adiblar.adapters.recycler.RecyclerViewAdapter
-import uz.mobiler.adiblar.database.MyDBHelper
-import uz.mobiler.adiblar.models.Writer
+import uz.mobiler.adiblar.adapters.data.ChosenViewPagerAdapter
+import uz.mobiler.adiblar.ui.setting.SettingFragment
 import uz.mobiler.adiblar.utils.MySharedPreference
 import java.util.*
 import kotlin.collections.ArrayList
 
 class ChooseFragment : Fragment() {
+    private lateinit var tabTitles: ArrayList<String>
+    private lateinit var root: View
 
-    lateinit var root: View
-    lateinit var myDBHelper: MyDBHelper
-    lateinit var writerList: ArrayList<Writer>
-    lateinit var recyclerViewAdapter: RecyclerViewAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.fragment_choose, container, false)
 
-        return root
-    }
-
-    override fun onResume() {
-        super.onResume()
         MySharedPreference.init(root.context)
         setLocale()
-        root.tv_savedWriters.text = getString(R.string.saqlangan_nadiblar)
 
-        myDBHelper = MyDBHelper(root.context)
-        writerList = myDBHelper.getAllWriters() as ArrayList<Writer>
+        tabTitles = ArrayList()
+        tabTitles.add(getString(R.string.adiblar))
+        tabTitles.add(getString(R.string.kitoblar))
 
-        if (writerList.isEmpty()) {
-            root.tv_noData.visibility = View.VISIBLE
-        }else{
-            root.tv_noData.visibility = View.GONE
-        }
+        val fragments = listOf(ChosenWritersFragment(), ChosenBooksFragment() )
 
-        recyclerViewAdapter =
-            RecyclerViewAdapter(writerList, object : RecyclerViewAdapter.OnItemClick {
-                override fun onItemClickListener(writer: Writer) {
-                    val bundle = Bundle()
-                    bundle.putSerializable("writer", writer)
-                    findNavController().navigate(R.id.writerInfoFragment, bundle)
-                }
-            }, root.context, 1)
+        val adapter = ChosenViewPagerAdapter(fragments,childFragmentManager)
+        root.pager.adapter = adapter
+        root.tabs.setupWithViewPager(root.pager)
+
+        setTabs()
+        root.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                root.pager.currentItem = tab.position
+                val tabItem =
+                    tab.customView?.findViewById<View>(R.id.tab_item)
+
+                val tabName = tab.customView?.findViewById<TextView>(R.id.tab_text)
+                tabName?.setTextColor(resources.getColor(R.color.white))
+                tabName?.text = tabTitles[tab.position]
+                tabItem?.background = resources.getDrawable(R.drawable.tablayout_default)
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+                val tabItem =
+                    tab.customView?.findViewById<View>(R.id.tab_item)
+                tabItem?.background = resources.getDrawable(R.drawable.tablayout_selected)
+                val tabName = tab.customView?.findViewById<TextView>(R.id.tab_text)
+
+                tabName?.setTextColor(resources.getColor(R.color.grey_tab))
+                tabName?.text = tabTitles[tab.position]
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
 
         root.iv_search.setOnClickListener {
             val bundle = Bundle()
-            bundle.putInt("search", 1)
+            bundle.putInt("search", 0)
             findNavController().navigate(R.id.searchFragment, bundle)
         }
-        root.rv_writers.adapter = recyclerViewAdapter
-        OverScrollDecoratorHelper.setUpOverScroll(root.rv_writers, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
+
+        return root
+    }
+
+
+    private fun setTabs() {
+        for (i in 0..1) {
+            val tabView =
+                View.inflate(root.context, R.layout.custom_tab, null)
+            root.tabs.getTabAt(i)?.customView = tabView
+            if (i == 0) {
+                tabView.background = resources.getDrawable(R.drawable.tablayout_default)
+                tabView.tab_text.setTextColor(resources.getColor(R.color.white))
+            }
+            tabView.tab_text.text = tabTitles[i]
+        }
     }
 
     private fun setLocale() {

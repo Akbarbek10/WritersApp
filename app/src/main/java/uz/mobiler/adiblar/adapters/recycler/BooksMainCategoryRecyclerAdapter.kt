@@ -1,6 +1,7 @@
 package uz.mobiler.adiblar.adapters.recycler
 
 import android.content.Context
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +42,17 @@ class BooksMainCategoryRecyclerAdapter(
     inner class VH(private val binding: ItemMainCategoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(s: String) {
-            binding.tvTitle.text = s.replace("_", " ")
+            val newTitle = s?.replace("_", " ")?.trim() ?: "Category"
+            binding.tvTitle.text = when (newTitle) {
+                "Badiiy Adabiyot" ->
+                    binding.root.context.getString(R.string.fiction_txt)
+                "Fan va talim" ->
+                    binding.root.context.getString(R.string.science_education_txt)
+                "IT sohasi" ->
+                    binding.root.context.getString(R.string.it_txt)
+                else ->
+                    "Category"
+            }
 
             val adapter = BooksRecyclerViewAdapter {
                 onClick(it)
@@ -55,9 +66,7 @@ class BooksMainCategoryRecyclerAdapter(
                         val arrayList = arrayListOf<Book>()
                         snapshot.children.forEach {
                             val value = it.getValue(Book::class.java)
-                            if (value != null) {
-                                arrayList.add(value)
-                            }
+                            if (value != null) arrayList.add(value)
                         }
                         adapter.differ.submitList(arrayList)
                     }
@@ -84,7 +93,6 @@ class BooksMainCategoryRecyclerAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         setAnimation(holder.itemView, position, holder.itemView.context.applicationContext)
         holder.onBind(differ.currentList[position])
-
     }
 
     override fun getItemCount(): Int = differ.currentList.size

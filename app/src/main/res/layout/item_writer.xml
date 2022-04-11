@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -11,6 +10,7 @@
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
+
 
     <!--    main item-->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,8 +23,7 @@
         android:paddingStart="4dp"
         android:paddingTop="4dp"
         android:paddingEnd="4dp"
-        android:paddingBottom="10dp"
-        android:visibility="visible">
+        android:paddingBottom="10dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -46,7 +45,7 @@
                     android:contentDescription="@string/app_name"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_launcher_background"
-                    app:layout_constraintDimensionRatio="12:10"
+                    app:layout_constraintDimensionRatio="6:7"
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -117,78 +116,83 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--    shimmer item-->
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerFrameLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shimmer_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:shimmer_duration="1500">
+        android:background="@color/backgroundWhite">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/shimmer_container"
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerFrameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:background="@color/backgroundWhite"
-            android:orientation="vertical"
-            android:paddingStart="4dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="4dp"
-            android:paddingBottom="10dp"
-            android:visibility="gone">
+            app:shimmer_colored="false"
+            app:shimmer_duration="1500">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/shimmer_cardView"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="0dp"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@color/backgroundWhite"
+                android:orientation="vertical"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="4dp"
+                android:paddingBottom="10dp">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/shimmer_cardView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/shimmer_image_url"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:adjustViewBounds="true"
-                        android:background="@color/shimmer_color"
-                        android:contentDescription="@string/app_name"
-                        app:layout_constraintDimensionRatio="12:10"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:layout_height="match_parent">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/shimmer_image_url"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:adjustViewBounds="true"
+                            android:background="@color/shimmer_color"
+                            android:contentDescription="@string/app_name"
+                            app:layout_constraintDimensionRatio="6:7"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/shimmer_tv_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/shimmer_tv_style"
-                android:fontFamily="@font/sfpro"
-                android:gravity="center_vertical"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/shimmer_cardView"
-                app:layout_constraintWidth_percent="0.8" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/shimmer_birthDeath"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/shimmer_tv_style"
-                android:fontFamily="@font/sfpro"
-                android:gravity="center_vertical"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/shimmer_tv_name"
-                app:layout_constraintTop_toBottomOf="@+id/shimmer_tv_name"
-                app:layout_constraintWidth_percent="0.6" />
+                <TextView
+                    android:id="@+id/shimmer_tv_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shimmer_tv_style"
+                    android:fontFamily="@font/sfpro"
+                    android:gravity="center_vertical"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/shimmer_cardView"
+                    app:layout_constraintWidth_percent="0.8" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
+                <TextView
+                    android:id="@+id/shimmer_birthDeath"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/shimmer_tv_style"
+                    android:fontFamily="@font/sfpro"
+                    android:gravity="center_vertical"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="@+id/shimmer_tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/shimmer_tv_name"
+                    app:layout_constraintWidth_percent="0.6" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

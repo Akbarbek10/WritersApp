@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
+    android:background="@color/main_back"
     android:orientation="horizontal"
     android:padding="15dp">
 
@@ -26,7 +27,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/poppins"
-        android:text="Yuklanmoqda . . . "
+        android:text="@string/download_process_msg"
         android:textColor="@color/grey"
         android:textSize="18sp" />
 

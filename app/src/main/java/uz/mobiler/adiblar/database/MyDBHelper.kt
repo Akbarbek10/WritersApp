@@ -9,7 +9,7 @@ import uz.mobiler.adiblar.utils.Config
 
 class MyDBHelper(context: Context) :
     SQLiteOpenHelper(context, Config.DATABASE_NAME, null, Config.DATABASE_VERSION),
-    DatabaseService {
+    DatabaseWritersService {
 
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -37,7 +37,7 @@ class MyDBHelper(context: Context) :
     override fun deleteWriter(writer: Writer) {
         val database = this.writableDatabase
         database.delete(Config.TABLE_NAME,
-            "${Config.WRITER} = ? and ${Config.BIRTH_DEAD} = ?",
+            "${Config.WRITER} = ? AND ${Config.BIRTH_DEAD} = ?",
             arrayOf(writer.writer,writer.birthDead))
         database.close()
     }
@@ -45,7 +45,7 @@ class MyDBHelper(context: Context) :
     override fun getAllWriters(): List<Writer> {
         val writerList = ArrayList<Writer>()
         val database = this.writableDatabase
-        val query = "select * from ${Config.TABLE_NAME}"
+        val query = "SELECT * FROM ${Config.TABLE_NAME}"
         val cursor = database.rawQuery(query, null)
         if (cursor.moveToFirst()) {
 
@@ -73,7 +73,7 @@ class MyDBHelper(context: Context) :
                 Config.DESCRIPTION,
                 Config.IMG_URL
             ),
-            "${Config.WRITER} = ? and ${Config.BIRTH_DEAD} = ?",
+            "${Config.WRITER} = ? AND ${Config.BIRTH_DEAD} = ?",
             arrayOf(writer.writer, writer.birthDead),
             null, null, null, null
         )

@@ -9,7 +9,7 @@
     <item
         android:id="@+id/third_fragment"
         android:icon="@drawable/ic_library"
-        android:title="Kutubxona" />
+        android:title="@string/library" />
 
     <item
         android:id="@+id/second_fragment"

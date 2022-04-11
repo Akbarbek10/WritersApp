@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">#00B238</color>
+    <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#00B238</color>
     <color name="colorAccent">#00B238</color>
     <color name="white">#fff</color>
@@ -14,7 +14,14 @@
     <color name="backgroundWhite">#25303F</color>
 
     <color name="smoothIcon">#80FFFFFF</color>
-    <color name="smoothBack">#131415</color>
+    <color name="smoothBack">#25303F</color>
     <color name="mark_color">#B10000</color>
-    <color name="shimmer_color">#F7F7F7</color>
+    <color name="shimmer_color">#19212A</color>
+    <color name="like_bg">#D6D8D8</color>
+    <color name="spinner_color">#00B238</color>
+    <color name="spinner_border_color">#00882B</color>
+    <color name="book_info_color">#25303F</color>
+    <color name="book_desc">#E6E6E6</color>
+    <color name="search_hint_color" >#8E8585</color>
+    <color name="ic_setting_color">#FFFFFF</color>
 </resources>

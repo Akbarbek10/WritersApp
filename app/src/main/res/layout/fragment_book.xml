@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_back"
     tools:context=".ui.library.BookFragment">
-
 
     <ImageView
         android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_margin="20dp"
+        android:layout_margin="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
@@ -106,7 +106,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="BOOK_NAME"
-        android:textColor="#1B1B1B"
+        android:textColor="@color/grey"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/card_book"
@@ -115,7 +115,7 @@
         app:layout_constraintStart_toEndOf="@+id/card_book"
         app:layout_constraintTop_toTopOf="@+id/card_book"
         app:layout_constraintVertical_bias="0.4"
-        app:layout_constraintWidth_percent="0.3" />
+        app:layout_constraintWidth_percent="0.4" />
 
     <TextView
         android:id="@+id/tv_authorName"
@@ -123,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="AUTHOR_NAME"
-        android:textColor="#5F5F5F"
+        android:textColor="@color/grey"
         android:textSize="16sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="@id/tv_bookName"
@@ -131,6 +131,32 @@
         app:layout_constraintStart_toStartOf="@id/tv_bookName"
         app:layout_constraintTop_toBottomOf="@+id/tv_bookName"
         app:layout_constraintWidth_percent="0.3" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:text="@string/book_language"-->
+<!--        android:textColor="#5F5F5F"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintHorizontal_bias="0"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_bookName"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_authorName" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_bookLang"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="UZB"-->
+<!--        android:layout_marginStart="4dp"-->
+<!--        android:textColor="#5F5F5F"-->
+<!--        android:textSize="18sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/tv1"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tv1"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_authorName" />-->
+
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -145,13 +171,13 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:fontFamily="@font/sfpro"
                 android:gravity="center_vertical"
-                android:text="Kitob haqida"
+                android:text="@string/book_lang"
                 android:textColor="@color/grey"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -159,23 +185,57 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
+                android:id="@+id/linearLayout6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/lang_corners"
+                android:padding="4dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView1"
+                app:layout_constraintLeft_toRightOf="@id/textView1"
+                app:layout_constraintTop_toTopOf="@+id/textView1">
+
+                <TextView
+                    android:id="@+id/tv_bookLang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BOOK_LANG"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfpro"
+                android:gravity="center_vertical"
+                android:text="@string/book_description"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/grey"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tv_desc"
+                app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+            <LinearLayout
                 android:id="@+id/linearLayout5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/genre_corners"
-                android:padding="5dp"
+                android:padding="4dp"
+                android:layout_marginLeft="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView"
-                app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintLeft_toRightOf="@id/textView"
-                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView">
 
                 <TextView
                     android:id="@+id/tv_genre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
                     android:text="BOOK_GENRE"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <TextView
@@ -188,7 +248,7 @@
                 android:gravity="center_vertical"
                 android:maxLines="12"
                 android:text="Aziz kitobxon! Qo'lingizdagi Shohchorbog\' tongi hikoyalar to\'plamdan turli mavzularda, turli uslublarda, bir-biridan mahoratli adiblar tomonidan yozilgan ijod namunalari joy olgan. O'ylaymizki, kitob sizga ma'qul bo'ladi."
-                android:textColor="@color/grey"
+                android:textColor="@color/book_desc"
                 android:textSize="16sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -236,8 +296,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/sfpro"
-                android:letterSpacing="0.12"
-                android:text="Yuklab olish"
+                android:letterSpacing="0.06"
+                android:text="@string/download_book"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />

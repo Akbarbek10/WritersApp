@@ -39,7 +39,7 @@
                 android:textSize="20sp" />
 
             <RadioButton
-                android:id="@+id/radio_ru"
+                android:id="@+id/radio_kr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -48,14 +48,35 @@
                 android:text="@string/kril"
                 android:textColor="@color/grey"
                 android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_en"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sfpro"
+                android:padding="5dp"
+                android:text="@string/english"
+                android:textColor="@color/grey"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_ru"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sfpro"
+                android:padding="5dp"
+                android:text="@string/russian"
+                android:textColor="@color/grey"
+                android:textSize="20sp" />
         </RadioGroup>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end|center_vertical"
-            android:orientation="horizontal"
-          >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/btn_cancel"
@@ -66,7 +87,7 @@
                 android:text="@string/bekor_qilish"
                 android:textColor="@color/myColor"
                 android:textSize="16sp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="20dp"
                 android:textStyle="bold" />
 
             <TextView

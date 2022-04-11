@@ -18,9 +18,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class WritersFragment : Fragment() {
-
     private lateinit var tabTitles: ArrayList<String>
     private lateinit var root: View
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

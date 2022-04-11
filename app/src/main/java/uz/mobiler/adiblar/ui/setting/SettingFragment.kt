@@ -38,14 +38,12 @@ class SettingFragment : Fragment() {
         val adRequest = AdRequest.Builder().build()
         root.adView.loadAd(adRequest)
 
-        when (MySharedPreference.language) {
-            "uz" -> {
-                root.spinner.text = getString(R.string.lotin)
-            }
-
-            "ru" -> {
-                root.spinner.text = getString(R.string.kril)
-            }
+        root.spinner.text = when (MySharedPreference.language) {
+            "uz" -> getString(R.string.lotin)
+            "kr" -> getString(R.string.kril)
+            "ru" -> getString(R.string.russian)
+            "en" -> getString(R.string.english)
+            else -> "Language"
         }
         setLocale()
         initUI()
@@ -90,9 +88,16 @@ class SettingFragment : Fragment() {
                     R.id.radio_uz -> {
                         MySharedPreference.language = "uz"
                     }
+                    R.id.radio_kr -> {
+                        MySharedPreference.language = "kr"
+                    }
                     R.id.radio_ru -> {
                         MySharedPreference.language = "ru"
                     }
+                    R.id.radio_en -> {
+                        MySharedPreference.language = "en"
+                    }
+
                 }
                 MySharedPreference.spinnerPosition = dialogView.radio_group.checkedRadioButtonId
                 startActivity(Intent(root.context, MainActivity::class.java))

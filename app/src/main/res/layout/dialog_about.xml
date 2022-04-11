@@ -20,7 +20,7 @@
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
             android:paddingBottom="15dp"
-            android:text="Biz haqimizda"
+            android:text="@string/dastur_haqida"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/grey" />
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/sfpro"
             android:gravity="center"
-            android:text="O'zbek va Jahon adabiyoti ixlosmandlari uchun ajoyib qo'llanma."
+            android:text="@string/about_us_desc"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@color/grey" />
 

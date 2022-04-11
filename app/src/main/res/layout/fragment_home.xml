@@ -11,28 +11,44 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <me.ibrahimsn.lib.SmoothBottomBar
-        android:id="@+id/bottomBar"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:backgroundColor="@color/smoothBack"
-        app:itemFontFamily="@font/sfpro"
-        app:textColor="@color/white"
-        app:textSize="14sp"
-        app:iconSize="24dp"
-        app:indicatorColor="@color/myColor"
-        app:indicatorRadius="25dp"
-        app:sideMargins="10dp"
-        app:itemPadding="10dp"
-        app:iconTint="@color/smoothIcon"
-        app:iconTintActive="#FFFFFF"
-        app:menu="@menu/menu_bottom"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_height="60dp"
+        android:layout_margin="4dp"
+        app:cardElevation="1dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <me.ibrahimsn.lib.SmoothBottomBar
+                android:id="@+id/bottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:backgroundColor="@color/smoothBack"
+                app:cornerRadius="16dp"
+                app:iconSize="24dp"
+                app:iconTint="@color/smoothIcon"
+                app:iconTintActive="#FFFFFF"
+                app:indicatorColor="@color/myColor"
+                app:indicatorRadius="25dp"
+                app:itemFontFamily="@font/sfpro"
+                app:itemPadding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:menu="@menu/menu_bottom"
+                app:sideMargins="10dp"
+                app:textColor="@color/white"
+                app:textSize="14sp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

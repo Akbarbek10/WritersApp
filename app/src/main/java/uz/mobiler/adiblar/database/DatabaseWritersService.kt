@@ -2,7 +2,7 @@ package uz.mobiler.adiblar.database
 
 import uz.mobiler.adiblar.models.Writer
 
-interface DatabaseService {
+interface DatabaseWritersService {
 
     fun addWriter(writer: Writer)
 

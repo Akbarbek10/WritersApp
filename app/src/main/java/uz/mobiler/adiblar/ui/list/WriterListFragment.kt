@@ -49,9 +49,6 @@ class WriterDataFragment : Fragment() {
                 "world"
             }
         }
-
-
-
         return root
 
     }
@@ -83,7 +80,6 @@ class WriterDataFragment : Fragment() {
                         }
 
                     }, root.context, 0)
-                OverScrollDecoratorHelper.setUpOverScroll(root.rv_writers, OverScrollDecoratorHelper.ORIENTATION_VERTICAL)
                 root.rv_writers.adapter = recyclerViewAdapter
             }
         })

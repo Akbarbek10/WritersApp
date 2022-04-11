@@ -21,26 +21,39 @@ import com.downloader.PRDownloaderConfig
 import com.like.LikeButton
 import com.like.OnLikeListener
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_writer.view.*
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import uz.mobiler.adiblar.R
+import uz.mobiler.adiblar.database.MyDBHelper
+import uz.mobiler.adiblar.database.MyDBHelperBook
 import uz.mobiler.adiblar.databinding.DialogDownloadBinding
 import uz.mobiler.adiblar.databinding.FragmentBookBinding
 import uz.mobiler.adiblar.models.Book
+import uz.mobiler.adiblar.utils.LotinKrilService
+import uz.mobiler.adiblar.utils.MySharedPreference
 import java.io.File
 import java.util.*
 
 
 class BookFragment : Fragment() {
-
     private var _binding: FragmentBookBinding? = null
     private val binding get() = _binding!!
-
+    private lateinit var myDBHelperBook: MyDBHelperBook
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentBookBinding.inflate(inflater, container, false)
+        myDBHelperBook = MyDBHelperBook(binding.root.context)
+        val book = arguments?.getSerializable("book") as Book
+        if (myDBHelperBook.getBookById(book)) {
+            binding.likeBack.setBackgroundResource(R.drawable.unlike_background)
+        } else {
+            binding.likeBack.setBackgroundResource(R.drawable.like_background)
+        }
+        binding.likeBtn.isLiked = myDBHelperBook.getBookById(book)
+
         OverScrollDecoratorHelper.setUpOverScroll(binding.scrollView)
 
         val downloadFolder =
@@ -58,13 +71,36 @@ class BookFragment : Fragment() {
             .build()
         PRDownloader.initialize(binding.root.context.applicationContext, config)
 
-        val book = arguments?.getSerializable("book") as Book
+
 
         book.apply {
-            binding.tvBookName.text = name
-            binding.tvAuthorName.text = author
-            binding.tvDesc.text = desc
-            binding.tvGenre.text = genre
+            when(MySharedPreference.language) {
+                "kr" -> {
+                    binding.tvBookName.text = LotinKrilService.convert(name?.uz!!)
+                    binding.tvAuthorName.text = LotinKrilService.convert(author?.uz!!)
+                    binding.tvDesc.text = LotinKrilService.convert(desc?.uz!!)
+                    binding.tvGenre.text = LotinKrilService.convert(genre?.uz!!)
+                }
+                "ru"  -> {
+                    binding.tvBookName.text = name?.ru
+                    binding.tvAuthorName.text = author?.ru
+                    binding.tvDesc.text = desc?.ru
+                    binding.tvGenre.text = genre?.ru
+                }
+                "en"  -> {
+                    binding.tvBookName.text = name?.eng
+                    binding.tvAuthorName.text = author?.eng
+                    binding.tvDesc.text = desc?.eng
+                    binding.tvGenre.text = genre?.eng
+                }
+                else -> {
+                    binding.tvBookName.text = name?.uz
+                    binding.tvAuthorName.text = author?.uz
+                    binding.tvDesc.text = desc?.uz
+                    binding.tvGenre.text = genre?.uz
+                }
+            }
+            binding.tvBookLang.text = language
 
             Picasso.get().load(image)
                 .placeholder(R.drawable.place_holder)
@@ -75,7 +111,7 @@ class BookFragment : Fragment() {
         val listFiles: Array<File>? = downloadFolder?.listFiles()
 
         listFiles?.forEach { file ->
-            if (file.name.contains(book.name!!, true)) {
+            if (file.name.contains(book.name?.eng!!, true)) {
                 binding.cardDownload.visibility = View.GONE
                 binding.cardRead.visibility = View.VISIBLE
             }
@@ -87,10 +123,12 @@ class BookFragment : Fragment() {
 
         binding.likeBtn.setOnLikeListener(object : OnLikeListener {
             override fun liked(likeButton: LikeButton?) {
+                myDBHelperBook.addBook(book)
                 binding.likeBack.setBackgroundResource(R.drawable.unlike_background)
             }
 
             override fun unLiked(likeButton: LikeButton?) {
+                myDBHelperBook.deleteBook(book)
                 binding.likeBack.setBackgroundResource(R.drawable.like_background)
             }
         })
@@ -98,8 +136,8 @@ class BookFragment : Fragment() {
         binding.cardRead.setOnClickListener {
             val listFiles1 = downloadFolder?.listFiles()
             listFiles1?.forEach { file ->
-                if (file.name.contains(book.name!!, true)) {
-                    openPDF(path!!, book.name)
+                if (file.name.contains(book.name?.eng!!, true)) {
+                    openPDF(path!!, book.name?.eng.toString())
                 }
             }
         }
@@ -120,7 +158,7 @@ class BookFragment : Fragment() {
                 .start(object : OnDownloadListener {
                     override fun onDownloadComplete() {
                         alertDialog.dismiss()
-                        Toast.makeText(view.root.context, "Yuklab olindi", Toast.LENGTH_SHORT)
+                        Toast.makeText(view.root.context, getString(R.string.downloaded_msg), Toast.LENGTH_SHORT)
                             .show()
                         binding.cardDownload.visibility = View.GONE
                         binding.cardRead.visibility = View.VISIBLE
@@ -156,7 +194,7 @@ class BookFragment : Fragment() {
         } catch (e: ActivityNotFoundException) {
             Toast.makeText(
                 binding.root.context,
-                "Kitobni ochishda xatolik !",
+                getString(R.string.downloaded_msg_error),
                 Toast.LENGTH_SHORT
             ).show()
         }

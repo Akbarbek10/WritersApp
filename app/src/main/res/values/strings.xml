@@ -1,24 +1,52 @@
 <resources>
     <string name="app_name">Adiblar</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="saqlangan_nadiblar">Saqlangan\nadiblar</string>
-    <string name="qidruv">Qidruv</string>
+    <string name="saqlanganlar">Saqlanganlar</string>
+    <string name="qidiruv">Qidiruv</string>
     <string name="sozlamalar">Sozlamalar</string>
     <string name="dastur_tili">Dastur tili</string>
     <string name="ulashish">Ulashish</string>
-    <string name="dastur_haqida">Dastur haqida</string>
+    <string name="dastur_haqida">Biz haqimizda</string>
     <string name="adiblar_nhayoti_va_ijodi">Adiblar\nhayoti va ijodi</string>
     <string name="mumtoz">Mumtoz adabiyoti</string>
     <string name="uzbek">O\'zbek adabiyoti</string>
+    <string name="dark_theme" translatable="false">Dark theme</string>
     <string name="world">Jahon adabiyoti</string>
     <string name="adiblar">Adiblar</string>
     <string name="saqlangan">Saqlangan</string>
-    <string name="kril">Ўзбек тили</string>
-    <string name="lotin">O\'zbek tili</string>
+    <string name="lotin" translatable="false">O\'zbek tili</string>
+    <string name="kril" translatable="false">Ўзбек тили</string>
+    <string name="english" translatable="false">English</string>
+    <string name="russian" translatable="false">Русский</string>
     <string name="tilni_tanlang">Tilni tanlang</string>
     <string name="bekor_qilish">Bekor qilish</string>
     <string name="ok">Ok</string>
     <string name="interstitial">ca-app-pub-9972961616661898/4349994384</string>
     <string name="night">Tungi rejim</string>
     <string name="day">Kunduzgi rejim</string>
+    <string name="book_language">Tili:</string>
+    <string name="genres">Janrlar</string>
+    <string name="more">Yana</string>
+    <string name="book_description">Kitob haqida</string>
+    <string name="download_book">Yuklab olish</string>
+    <string name="no_available_data">Ma\'lumot mavjud emas</string>
+    <string name="library">Kutubxona</string>
+    <string name="about_us_desc">O\'zbek va Jahon adabiyoti ixlosmandlari uchun ajoyib imkoniyat.</string>
+    <string name="downloaded_msg">Yuklab olindi</string>
+    <string name="downloaded_msg_error">Kitobni ochishda xatolik!</string>
+    <string name="e_library">Elektron\nKutubxona</string>
+    <string name="fiction_txt">Badiiy Adabiyot</string>
+    <string name="science_education_txt">Fan va talim</string>
+    <string name="it_txt">IT sohasi</string>
+    <string name="kitoblar">Kitoblar</string>
+    <string name="book_lang">Kitob tili:</string>
+    <string name="download_process_msg">Yuklanmoqda . . .</string>
+
+
+    <string-array name="languages">
+        <item>Barchasi</item>
+        <item>Inglizcha</item>
+        <item>Ruscha</item>
+        <item>O\'zbekcha</item>
+    </string-array>
 </resources>

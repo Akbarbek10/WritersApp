@@ -42,8 +42,8 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:layout_width="14dp"
-                        android:layout_height="14dp"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
                         android:src="@drawable/ic_back"
                         android:tint="@color/grey" />
                 </LinearLayout>
@@ -73,7 +73,6 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="80dp"
-                android:layout_marginRight="80dp"
                 android:background="@drawable/like_background_white"
                 android:gravity="center"
                 app:layout_collapseMode="pin">
@@ -97,7 +96,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="35dp"
-                android:layout_marginLeft="30dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/sfpro"
                 android:textSize="16sp"
@@ -127,10 +125,10 @@
                     android:layout_weight="1"
                     android:background="@color/backgroundWhite"
                     android:fontFamily="@font/sfpro"
-                    android:hint="@string/qidruv"
+                    android:hint="@string/qidiruv"
                     android:inputType="textAutoComplete"
                     android:textColor="@color/grey"
-                    android:textColorHint="@color/grey" />
+                    android:textColorHint="@color/search_hint_color" />
 
                 <ImageView
                     android:id="@+id/iv_cancel"
